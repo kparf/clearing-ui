@@ -1,0 +1,38 @@
+[
+  {
+    "id" : 1,
+    "name" : "Rhys",
+    "email" : "rhys@gmail.com",
+    "status" : "active"
+  },
+  {
+    "id" : 2,
+    "name" : "Woods",
+    "email" : "woods@gmail.com",
+    "status" : "active"
+  },
+  {
+    "id" : 3,
+    "name" : "simpson",
+    "email" : "simpson@gmail.com",
+    "status" : "active"
+  },
+  {
+    "id" : 4,
+    "name" : "Kai",
+    "email" : "kai@gmail.com",
+    "status" : "active"
+  },
+  {
+    "id" : 5,
+    "name" : "Lewis",
+    "email" : "lewis@gmail.com",
+    "status" : "active"
+  },
+  {
+    "id" : 6,
+    "name" : "Evans",
+    "email" : "evans@gmail.com",
+    "status" : "active"
+  }
+]
