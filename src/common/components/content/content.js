@@ -3,9 +3,9 @@ import {
     Route,
     Link
 } from 'react-router-dom';
-import CleaningCompanyList from '../../admin/components/CleaningCompanyList';
-import UserList from '../../admin/components/UserList';
-import Header from './Header';
+import CleaningCompanyList from '../../../admin/components/cleaning-company-list/cleaning-company-list';
+import UserList from '../../../admin/components/user-list/user-list';
+import Header from '../header/header';
 
 const Content = function({match}) {
     console.log(match);
