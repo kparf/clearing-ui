@@ -4,11 +4,11 @@
     "link" : "/calendar"
   },
   {
-    "name" : "Order List",
-    "link" : "/order-list"
+    "name" : "Reservation List",
+    "link" : "/reservation-list"
   },
   {
-    "name" : "Profile edit",
+    "name" : "Profile",
     "link" : "/profile-edit"
   },
   {

@@ -5,9 +5,13 @@
     a {
         text-decoration: none;
         color: $primary-color;
+        &:hover {
+            color: $secondary-color;
+        }
     }
     ul {
         margin: 0;
+        padding: 0;
         display: flex;
         list-style-type: none;
         li {

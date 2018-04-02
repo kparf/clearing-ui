@@ -7,6 +7,8 @@ import CleaningCompanyList from '../../../admin/components/cleaning-company-list
 import UserList from '../../../admin/components/user-list/user-list';
 import ProviderContainer from "../../../provider/components/provider-container/provider-container";
 
+import './content.css';
+
 const Content = function({match}) {
     return (
         <div className="content">
