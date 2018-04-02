@@ -1,0 +1,27 @@
+@import '../../../styles/colors';
+
+.header {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    h1 {
+        font-size: 30px;
+        margin: 0;
+    }
+    img {
+        height: 40px;
+        margin-left: 10px;
+    }
+}
+
+.header__provider-name {
+    font-weight: bold;
+    font-size: 30px;
+    color: $secondary-color;
+}

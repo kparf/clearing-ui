@@ -1,13 +1,24 @@
 import React from 'react';
-import logo from '../../../logo.svg';
+import logo from './logo.svg';
+import HeaderNavigation from './__navigaion/header__navigation';
+import './header.css';
 
-function Header() {
-    return (
-        <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-        </header>
-    )
-};
+class Header extends React.Component{
+    render() {
+        return (
+            <header className='header'>
+                <div className='header__logo'>
+                    <h1>CLEARING SERVICE</h1>
+                    <img src={logo}/>
+                </div>
+                <HeaderNavigation menu={this.props.menu}/>
+
+                <div className='header__provider-name'>
+                    PROVIDER NAME
+                </div>
+            </header>
+        );
+    }
+}
 
 export default Header;
