@@ -1,0 +1,14 @@
+@import "styles/colors.scss";
+
+.provider-reservation-list_status-new {
+    font-weight: bold;
+    color: $secondary-color;
+}
+
+.provider-reservation-list_status-confirmed {
+    font-weight: bold;
+}
+
+.provider-reservation-list_status-cancelled {
+    font-weight: bold;
+}
