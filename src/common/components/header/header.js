@@ -9,7 +9,7 @@ class Header extends React.Component{
             <header className='header'>
                 <div className='header__logo'>
                     <h1>CLEARING SERVICE</h1>
-                    <img src={logo}/>
+                    <img src={logo} alt=""/>
                 </div>
                 <HeaderNavigation menu={this.props.menu}/>
 

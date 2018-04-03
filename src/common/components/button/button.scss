@@ -1,0 +1,11 @@
+@import 'styles/colors';
+@import 'styles/settings';
+
+.button {
+    color: $secondary-color;
+    font-size: 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+}

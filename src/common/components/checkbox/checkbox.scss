@@ -1,0 +1,19 @@
+@import 'styles/settings';
+@import 'styles/_colors.scss';
+
+
+@mixin checkbox {
+    font-size: $base-font-size;
+}
+
+label.checkbox {
+    display: block;
+    input {
+        @include checkbox();
+    }
+}
+
+input.checkbox {
+    display: block;
+    @include checkbox();
+}
