@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './app';
 import registerServiceWorker from './registerServiceWorker';
+import configureStore from './configure-store';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = configureStore();
+ReactDOM.render(<App store={store}/>, document.getElementById('root'));
 registerServiceWorker();
