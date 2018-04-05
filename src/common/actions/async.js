@@ -3,16 +3,17 @@ import {
     loadServicesSuccess,
     loadServicesFail
 } from './sync';
-import { fetchServices } from '../api';
+import api from '../api';
 
 export function fetchServices() {
     return async (dispatch, getStatus) => {
         dispatch(loadServicesRequest());
-        const response = await fetchServices();
-        console.log(response);
-        loadServicesSuccess([{
-            id: "test",
-            name: "name"
-        }]);
+        const response = await api.fetchServices();
+        if (response.status === 200) {
+            const body = await response.json();
+            dispatch(loadServicesSuccess(body));
+        } else {
+            dispatch(loadServicesFail());
+        }
     }
 }

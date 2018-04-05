@@ -3,7 +3,7 @@ import ProviderRegistration__Form from './__form/provider-registration__form'
 import ProviderRegistration__Title from './__title/provider-registration__title';
 import './provider-registration.css';
 import { connect } from 'react-redux';
-import { fetchServices } from '../../provider-actions';
+import { fetchServices } from '../../../common/actions/async';
 
 class ProviderRegistration extends React.Component{
 
@@ -13,28 +13,32 @@ class ProviderRegistration extends React.Component{
     }
 
     render(){
+        const { services } = this.props;
         return (
             <div className="provider-registration">
                 <ProviderRegistration__Title/>
-                <ProviderRegistration__Form/>
+                <ProviderRegistration__Form services={services}/>
                 <a href="#" onClick={this.handleRefreshClick}>refresh</a>
             </div>
         );
     }
 
-    handleRefreshClick(e) {
-        e.preventDefault();
-        console.log(this);
+    componentDidMount() {
         const { dispatch } = this.props;
         dispatch(fetchServices());
+    }
 
+    handleRefreshClick(e) {
+        e.preventDefault();
+        const { dispatch } = this.props;
+        dispatch(fetchServices());
     }
 }
 
 function mapStateToProps(state) {
-
     return {
-
+        services: state.common.services.items,
+        isFetching: state.common.services.isFetching,
     }
 }
 

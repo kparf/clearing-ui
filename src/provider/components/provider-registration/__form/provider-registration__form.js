@@ -5,9 +5,7 @@ import TextArea from '../../../../common/components/textarea/textarea';
 import Button from '../../../../common/components/button/button';
 import ProviderRegistration__Services from '../__services/provider-registration__services';
 
-function ProviderRegistration__Form() {
-
-
+function ProviderRegistration__Form({ services }) {
     return (
         <form role="form" className='provider-registration__form'>
             <fieldset>
@@ -16,7 +14,7 @@ function ProviderRegistration__Form() {
                 <Input label='Address'/>
                 <TextArea label='Description'/>
 
-                <ProviderRegistration__Services label='Services'/>
+                <ProviderRegistration__Services label='Services' services={services}/>
 
                 <Input label='Password' type='password'/>
                 <Input label='Repeat Password' type='password'/>

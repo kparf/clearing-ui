@@ -1,9 +1,8 @@
 import React from 'react';
 import './provider-registration__services.css';
 import Checkbox from '../../../../common/components/checkbox/checkbox';
-import services from '../__services/services';
 
-function ProviderRegistration__Services({label}) {
+function ProviderRegistration__Services({ label, services }) {
 
     const serviceRadioButtons = services.map(service => {
         return (

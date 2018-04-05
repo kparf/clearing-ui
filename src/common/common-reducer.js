@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import {
     LOAD_SERVICES_REQUEST,
+    LOAD_SERVICES_SUCCESS,
     LOAD_SERVICES_FAIL
 } from "./actions/sync";
 
@@ -13,7 +14,7 @@ function services(state = {
             return Object.assign({}, state, {
                 isFetching: true
             });
-        case LOAD_SERVICES_FAIL:
+        case LOAD_SERVICES_SUCCESS:
             return Object.assign({}, state, {
                 isFetching: false,
                 items: action.data

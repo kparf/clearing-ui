@@ -1,5 +1,9 @@
-const DATA_URL = 'localhost:9000/api';
+const DATA_URL = 'http://localhost:9000/api';
 
-export function fetchServices() {
+function fetchServices() {
     return fetch(`${DATA_URL}/services`);
 }
+
+export default {
+    fetchServices
+};
