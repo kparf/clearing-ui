@@ -10,6 +10,7 @@ function ProviderRegistration__Form({ services }) {
         <form role="form" className='provider-registration__form'>
             <fieldset>
                 <Input label='Logo' type='file'/>
+                <Input label='Email' type='email'/>
                 <Input label='Name'/>
                 <Input label='Address'/>
                 <TextArea label='Description'/>

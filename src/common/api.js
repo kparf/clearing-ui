@@ -4,6 +4,7 @@ function fetchServices() {
     return fetch(`${DATA_URL}/services`);
 }
 
+
 export default {
     fetchServices
 };
