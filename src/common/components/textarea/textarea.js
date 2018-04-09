@@ -2,10 +2,10 @@ import React from 'react';
 import classNames from "classnames";
 import './textarea.css';
 
-function TextArea({label}) {
+function TextArea({label, inputRef}) {
 
     const textArea = (
-        <textarea className={classNames({'text-area' : !label})}/>
+        <textarea className={classNames({'text-area' : !label})} ref={inputRef}/>
     );
 
     if (label) {

@@ -10,6 +10,7 @@ class ProviderRegistration extends React.Component{
     constructor(props) {
         super(props);
         this.handleRefreshClick = this.handleRefreshClick.bind(this);
+        this.submitFormHandler = this.submitFormHandler.bind(this);
     }
 
     render(){
@@ -17,8 +18,7 @@ class ProviderRegistration extends React.Component{
         return (
             <div className="provider-registration">
                 <ProviderRegistration__Title/>
-                <ProviderRegistration__Form services={services}/>
-                <a href="#" onClick={this.handleRefreshClick}>refresh</a>
+                <ProviderRegistration__Form services={services} onSubmit={this.submitFormHandler}/>
             </div>
         );
     }
@@ -26,6 +26,11 @@ class ProviderRegistration extends React.Component{
     componentDidMount() {
         const { dispatch } = this.props;
         dispatch(fetchServices());
+    }
+
+    submitFormHandler(e, data) {
+        e.preventDefault();
+        console.log(data);
     }
 
     handleRefreshClick(e) {

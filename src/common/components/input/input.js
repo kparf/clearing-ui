@@ -2,11 +2,17 @@ import React from 'react';
 import classNames from 'classnames';
 import './input.css';
 
-function Input({label, type}) {
+function Input({label, type, defaultValue, defaultChecked, inputRef}) {
     const inputType = type || "text";
 
     const input = (
-        <input className={classNames({input : !label})} type={inputType}/>
+        <input
+            defaultValue={defaultValue}
+            defaultChecked={defaultChecked}
+            className={classNames({input : !label})}
+            type={inputType}
+            ref={inputRef}
+        />
     );
 
     if (label) {
