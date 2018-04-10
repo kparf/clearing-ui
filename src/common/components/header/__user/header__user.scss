@@ -1,0 +1,15 @@
+@import 'styles/_colors.scss';
+
+.header__user {
+    font-weight: bold;
+    font-size: 30px;
+    color: $secondary-color;
+    a {
+        color: $secondary-color;
+        text-decoration: none;
+    }
+}
+
+.header__login-divider {
+    color: $primary-color;
+}

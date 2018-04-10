@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
-import HeaderNavigation from './__navigaion/header__navigation';
+import Header__Navigation from './__navigaion/header__navigation';
 import './header.css';
 import menu from './menu';
+import Header__User from "./__user/header__user";
+import { connect } from 'react-redux';
 
 class Header extends React.Component{
     render() {
@@ -13,14 +15,11 @@ class Header extends React.Component{
                     <h1>CLEARING SERVICE</h1>
                     <img src={logo} alt=""/>
                 </div>
-                <HeaderNavigation menu={menu}/>
-
-                <div className='header__provider-name'>
-                    PROVIDER NAME
-                </div>
+                <Header__Navigation menu={menu}/>
+                <Header__User />
             </header>
         );
     }
 }
 
-export default Header;
+export default connect()(Header);

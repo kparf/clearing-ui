@@ -1,4 +1,4 @@
-@import '../../../styles/colors';
+@import 'styles/_colors.scss';
 
 .header {
     padding: 20px;
@@ -18,10 +18,4 @@
         height: 40px;
         margin-left: 10px;
     }
-}
-
-.header__provider-name {
-    font-weight: bold;
-    font-size: 30px;
-    color: $secondary-color;
 }

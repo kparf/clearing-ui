@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './header__navigation.css';
 
-function HeaderNavigation({menu}) {
+function Header__Navigation({menu}) {
     let menuItems = [];
     if (menu) {
         menuItems = menu.map( item => (
@@ -19,4 +19,4 @@ function HeaderNavigation({menu}) {
     )
 }
 
-export default HeaderNavigation;
+export default Header__Navigation;
