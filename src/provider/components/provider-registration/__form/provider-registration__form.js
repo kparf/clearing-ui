@@ -4,51 +4,88 @@ import Input from '../../../../common/components/input/input';
 import TextArea from '../../../../common/components/textarea/textarea';
 import Button from '../../../../common/components/button/button';
 import ProviderRegistration__Services from '../__services/provider-registration__services';
+import { connect } from 'react-redux';
+import { fetchServices } from "../../../../common/actions/async";
+import { providerRegistrationFormChange } from "../../../actions/sync";
 
 class ProviderRegistration__Form extends React.Component {
 
     constructor(props) {
         super(props);
-        this.form = React.createRef();
-        this.emailInput = React.createRef();
-        this.nameInput = React.createRef();
-        this.addressInput = React.createRef();
-        this.descriptionInput = React.createRef();
-        this.passwordInput = React.createRef();
-        this.repeatPasswordInput = React.createRef();
 
-        this.submitHandler = this.submitHandler.bind(this);
+        this.emailChangeHandler = this.emailChangeHandler.bind(this);
+        this.nameChangeHandler = this.nameChangeHandler.bind(this);
+        this.addressChangeHandler = this.addressChangeHandler.bind(this);
+        this.descriptionChangeHandler = this.descriptionChangeHandler.bind(this);
+        this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
+        this.repeatPasswordChangeHandler = this.repeatPasswordChangeHandler.bind(this);
+        this.servicesChangeHandler = this.servicesChangeHandler.bind(this);
     }
 
-    submitHandler(e) {
-        e.preventDefault();
-        const { onSubmit } = this.props;
-        console.log(this.form.current.value);
-        onSubmit(e, {
-            email: this.emailInput.current.value,
-            name: this.nameInput.current.value,
-            address: this.addressInput.current.value,
-            description: this.descriptionInput.current.value,
-            password: this.passwordInput.current.value,
-            repeatPassword: this.repeatPasswordInput.current.value
-        });
+    componentDidMount() {
+        const { dispatch } = this.props;
+        dispatch(fetchServices());
+    }
+
+    emailChangeHandler(e) {
+        this.props.dispatch(providerRegistrationFormChange({
+            email: e.currentTarget.value
+        }));
+    }
+
+    nameChangeHandler(e) {
+        this.props.dispatch(providerRegistrationFormChange({
+            name: e.currentTarget.value
+        }));
+    }
+
+    addressChangeHandler(e) {
+        this.props.dispatch(providerRegistrationFormChange({
+            address: e.currentTarget.value
+        }));
+    }
+
+    descriptionChangeHandler(e) {
+        this.props.dispatch(providerRegistrationFormChange({
+            description: e.currentTarget.value
+        }));
+    }
+
+    servicesChangeHandler(e, values) {
+        this.props.dispatch(providerRegistrationFormChange({
+            services: values
+        }));
+    }
+
+    passwordChangeHandler(e) {
+        this.props.dispatch(providerRegistrationFormChange({
+            password: e.currentTarget.value
+        }));
+    }
+
+    repeatPasswordChangeHandler(e) {
+        this.props.dispatch(providerRegistrationFormChange({
+            repeatPassword: e.currentTarget.value
+        }));
     }
 
     render() {
-        const { services, onSubmit } = this.props;
+        const { services, form, onSubmit } = this.props;
         return (
-            <form role="form" className='provider-registration__form' ref={this.form} onSubmit={this.submitHandler}>
+            <form role="form" className='provider-registration__form' ref={this.form} onSubmit={onSubmit}>
                 <fieldset>
                     <Input label='Logo' type='file'/>
-                    <Input label='Email' type='email' inputRef={this.emailInput}/>
-                    <Input label='Name' inputRef={this.nameInput}/>
-                    <Input label='Address' inputRef={this.addressInput}/>
-                    <TextArea label='Description' inputRef={this.descriptionInput}/>
+                    <Input value={form.email} label='Email' type='email' onChange={this.emailChangeHandler}/>
+                    <Input value={form.name} label='Name' onChange={this.nameChangeHandler}/>
+                    <Input value={form.address} label='Address' onChange={this.addressChangeHandler}/>
+                    <TextArea label='Description' onChange={this.descriptionChangeHandler} value={form.description}/>
 
-                    <ProviderRegistration__Services label='Services' services={services}/>
+                    <ProviderRegistration__Services value={form.services}
+                                                    label='Services'
+                                                    services={services} onChange={this.servicesChangeHandler}/>
 
-                    <Input label='Password' type='password' inputRef={this.passwordInput}/>
-                    <Input label='Repeat Password' type='password' inputRef={this.repeatPasswordInput}/>
+                    <Input value={form.password} label='Password' type='password' onChange={this.passwordChangeHandler}/>
+                    <Input value={form.repeatPassword} label='Repeat Password' type='password' onChange={this.repeatPasswordChangeHandler}/>
                     <Button type='submit'>REGISTER</Button>
                 </fieldset>
             </form>
@@ -56,4 +93,11 @@ class ProviderRegistration__Form extends React.Component {
     }
 }
 
-export default ProviderRegistration__Form;
+function mapStateToProps(state) {
+    return {
+        services: state.common.services.items,
+        isFetching: state.common.services.isFetching,
+    }
+}
+
+export default connect(mapStateToProps)(ProviderRegistration__Form);

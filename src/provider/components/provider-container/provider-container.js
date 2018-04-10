@@ -34,6 +34,7 @@ class ProviderContainer extends React.Component {
                     <Route path={match.path + '/reservation-list'} component={ProviderReservationList}/>
                     <Route path={match.path + '/profile-edit'} component={ProviderProfileEdit}/>
                     <Route path={match.path + '/registration/confirmation/:verificationKey'} component={ProviderRegistrationConfirmation}/>
+                    <Route path={match.path + '/registration/confirmation'} component={ProviderRegistrationConfirmation}/>
                     <Route path={match.path + '/registration'} component={ProviderRegistration}/>
                     <Route path={match.path + '/schedule'} component={ProviderSchedule}/>
                 </Switch>

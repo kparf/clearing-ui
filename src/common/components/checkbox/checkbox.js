@@ -2,10 +2,14 @@ import React from 'react';
 import './checkbox.css';
 import classNames from "classnames";
 
-function Checkbox({label}) {
+function Checkbox({label, value, onChange, checked}) {
 
     const checkbox = (
-        <input className={classNames({checkbox : !label})} type="checkbox"/>
+        <input className={classNames({checkbox : !label})}
+               value={value}
+               type="checkbox"
+               checked={checked}
+               onChange={onChange}/>
     );
 
     if (label) {

@@ -4,7 +4,19 @@ function fetchServices() {
     return fetch(`${DATA_URL}/services`);
 }
 
+function createProvider(form) {
+    return fetch(`${DATA_URL}/providers`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(form),
+        cache: 'no-cache'
+    });
+}
 
 export default {
-    fetchServices
+    fetchServices,
+    createProvider
 };
