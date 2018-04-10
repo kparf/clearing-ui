@@ -16,7 +16,15 @@ function createProvider(form) {
     });
 }
 
+function verifyProvider(verificationKey) {
+    return fetch(`${DATA_URL}/providers/verify/${verificationKey}`, {
+        method: 'POST',
+        cache: 'no-cache'
+    });
+}
+
 export default {
     fetchServices,
-    createProvider
+    createProvider,
+    verifyProvider
 };

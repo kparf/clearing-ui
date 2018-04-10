@@ -25,10 +25,9 @@ export function providerRegistrationFail() {
     }
 }
 
-export function providerVerificationRequest(key) {
+export function providerVerificationRequest() {
     return {
         type: PROVIDER_VERIFICATION_REQUEST,
-        key
     }
 }
 

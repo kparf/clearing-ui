@@ -4,7 +4,10 @@ import {
     PROVIDER_REGISTRATION_SUCCESS,
     PROVIDER_REGISTRATION_FAIL,
     PROVIDER_REGISTRATION_CLEAR_STATUS,
-    PROVIDER_REGISTRATION_REQUEST
+    PROVIDER_REGISTRATION_REQUEST,
+    PROVIDER_VERIFICATION_REQUEST,
+    PROVIDER_VERIFICATION_SUCCESS,
+    PROVIDER_VERIFICATION_FAIL
 } from "./actions/sync";
 
 function reservationReducer(state = {
@@ -57,6 +60,24 @@ function registrationReducer(state = {
                 isProviderRegistrationSuccess: false,
                 isProviderRegistrationFail: false,
                 isFetching: false
+            };
+        case PROVIDER_VERIFICATION_REQUEST:
+            return {
+                ...state,
+                isFetching: true,
+                verificationStatus: ''
+            };
+        case PROVIDER_VERIFICATION_SUCCESS:
+            return {
+                ...state,
+                verificationStatus: 'success',
+                isFetching: false
+            };
+        case PROVIDER_VERIFICATION_FAIL:
+            return {
+                ...state,
+                isFetching: false,
+                verificationStatus: 'fail',
             };
         default:
             return state;
