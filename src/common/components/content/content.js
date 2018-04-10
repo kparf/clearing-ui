@@ -6,12 +6,15 @@ import {
 import CleaningCompanyList from '../../../admin/components/cleaning-company-list/cleaning-company-list';
 import UserList from '../../../admin/components/user-list/user-list';
 import ProviderContainer from "../../../provider/components/provider-container/provider-container";
+import Header from "../header/header";
 
 import './content.css';
 
 const Content = function({match}) {
+
     return (
         <div className="content">
+            <Header/>
             <Route path={match.path + '/users'} component={UserList}/>
             <Route path={match.path + '/cleaning-companies'} component={CleaningCompanyList}/>
             <Route path={match.path + '/provider'} component={ProviderContainer}/>
