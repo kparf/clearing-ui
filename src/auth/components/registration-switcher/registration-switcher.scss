@@ -1,0 +1,21 @@
+@import 'styles/_colors';
+@import 'styles/_settings';
+
+.registration-switcher {
+    display: flex;
+    width: $base-container-width;
+    margin: $base-top-margin auto 0 auto;
+    justify-content: center;
+}
+
+.registration-switcher__option {
+    width: 50%;
+    text-align: center;
+    img {
+        height: 250px;
+    }
+    a {
+        color: $primary-color;
+        text-decoration: none;
+    }
+}
