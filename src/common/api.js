@@ -1,3 +1,4 @@
+import base64 from 'base-64';
 const DATA_URL = 'http://localhost:9000/api';
 
 function fetchServices() {
@@ -23,8 +24,19 @@ function verifyProvider(verificationKey) {
     });
 }
 
+function login({email, password}) {
+    const creds = base64.encode(`${email}:${password}`);
+    return fetch(`${DATA_URL}/auth`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Basic ${creds}`
+        },
+    });
+}
+
 export default {
     fetchServices,
     createProvider,
-    verifyProvider
+    verifyProvider,
+    login
 };

@@ -3,17 +3,23 @@ import {
     authenticationSuccess,
     authenticationFail
 } from './sync';
-import api from '../api';
+import api from '../../common/api';
+import { push } from 'react-router-redux';
 
-export function fetchServices() {
-    return async (dispatch, getStatus) => {
-        dispatch(loadServicesRequest());
-        const response = await api.fetchServices();
-        if (response.status === 200) {
+export function loginRequest(form) {
+    return async (dispatch) => {
+        dispatch(authenticationRequest());
+        const response = await api.login(form);
+        if (response.status === 201) {
             const body = await response.json();
-            dispatch(loadServicesSuccess(body));
+            dispatch(authenticationSuccess(body))
+            if (body.user && body.user.role === 'provider') {
+                dispatch(push('/content/provider/reservation-list'));
+            } else {
+                dispatch(push('/content/'));
+            }
         } else {
-            dispatch(loadServicesFail());
+            dispatch(authenticationFail())
         }
     }
 }

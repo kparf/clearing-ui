@@ -1,1 +1,27 @@
 @import 'styles/_colors';
+@import 'styles/_settings';
+
+.login {
+    width: $base-form-container-width;
+    margin: $base-top-margin auto 0 auto;
+
+    fieldset {
+        border: none;
+        padding: 0;
+        margin: 0 0 0 2px;
+    }
+}
+
+.login__title {
+    h1 {
+        margin: 0;
+    }
+
+    p {
+        margin-top: 5px;
+    }
+}
+
+.login__submit-button {
+    margin-top: 20px;
+}

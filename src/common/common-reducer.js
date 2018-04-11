@@ -4,7 +4,7 @@ import {
     LOAD_SERVICES_SUCCESS,
     LOAD_SERVICES_FAIL
 } from "./actions/sync";
-import authReducer from "../auth/auth-reducer";
+import { authReducer, loginFormReducer } from "../auth/auth-reducer";
 
 function services(state = {
     isFetching: false,
@@ -27,7 +27,8 @@ function services(state = {
 
 const commonReducer = combineReducers({
     services,
-    user: authReducer
+    user: authReducer,
+    loginForm: loginFormReducer
 });
 
 export default commonReducer;

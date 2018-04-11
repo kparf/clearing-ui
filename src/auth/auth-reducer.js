@@ -1,8 +1,38 @@
+import {
+    AUTHENTICATION_SUCCESS,
+    LOGIN_FROM_CHANGE
+} from "./actions/sync";
 
-function authReducer(state = {
-    role: 'guest'
+export function authReducer(state = {
+    role: 'guest',
 }, action) {
-    return state;
+    switch (action.type) {
+        case AUTHENTICATION_SUCCESS:
+            return {
+                ...state,
+                ...action.data.user
+            };
+        default:
+            return state;
+    }
 }
 
-export default authReducer;
+export function loginFormReducer(state = {
+    isFetching: false,
+    email: '',
+    password: ''
+}, action) {
+    switch (action.type) {
+        case LOGIN_FROM_CHANGE:
+            return {
+                ...state,
+                ...action.form
+            };
+        case AUTHENTICATION_SUCCESS:
+            return {
+                ...state
+            };
+        default:
+            return state;
+    }
+}

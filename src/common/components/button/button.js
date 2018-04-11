@@ -1,9 +1,11 @@
 import React from 'react';
 import './button.css';
 
-function Button({children, type, onClick}) {
+function Button({children, type, onClick, className}) {
     return (
-        <button className="button" type={type} onClick={onClick}>{children} ></button>
+        <button className={`button ${className}`}
+                type={type}
+                onClick={onClick}>{children} ></button>
     )
 }
 

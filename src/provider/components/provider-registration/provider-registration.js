@@ -16,7 +16,6 @@ class ProviderRegistration extends React.Component{
     }
 
     render(){
-
         const { isFetching, form } = this.props;
 
         let loading = null;
@@ -37,7 +36,6 @@ class ProviderRegistration extends React.Component{
         e.preventDefault();
         const { match, dispatch, form } = this.props;
         dispatch(registerProvider(form, `${match.url}/${REDIRECT_CONFIRMATION_LINK}`));
-
     }
 }
 

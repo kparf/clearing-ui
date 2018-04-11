@@ -15,7 +15,7 @@ function Header__User({user}) {
 
     return (
         <div className='header__user'>
-            <Link to='/content/login'>LOGIN</Link>
+            <Link to='/content/login'>LOG IN</Link>
             <span className='header__login-divider'>&#32;|&#32;</span>
             <Link to='/content/registration'>REGISTER</Link>
         </div>

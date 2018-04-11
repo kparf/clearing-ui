@@ -1,6 +1,7 @@
 export const AUTHENTICATION_REQUEST = 'AUTHENTICATION_REQUEST';
 export const AUTHENTICATION_SUCCESS = 'AUTHENTICATION_SUCCESS';
 export const AUTHENTICATION_FAIL = 'AUTHENTICATION_FAIL';
+export const LOGIN_FROM_CHANGE = 'LOGIN_FROM_CHANGE';
 
 export function authenticationRequest() {
     return {
@@ -8,10 +9,10 @@ export function authenticationRequest() {
     }
 }
 
-export function authenticationSuccess(user) {
+export function authenticationSuccess(data) {
     return {
         type : AUTHENTICATION_SUCCESS,
-        user
+        data
     }
 }
 
@@ -19,5 +20,12 @@ export function authenticationFail(message) {
     return {
         type: AUTHENTICATION_FAIL,
         message
+    }
+}
+
+export function loginFormChange(form) {
+    return {
+        type: LOGIN_FROM_CHANGE,
+        form
     }
 }
