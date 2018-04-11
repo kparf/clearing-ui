@@ -4,11 +4,11 @@ import './header__user.css';
 
 function Header__User({user}) {
 
-    if (user) {
+    if (user && (user.role === 'provider' || user.role === 'client')) {
         const name = user.name ? user.name : user.email;
         return (
             <div className='header__user'>
-                name
+                {name}
             </div>
         )
     }

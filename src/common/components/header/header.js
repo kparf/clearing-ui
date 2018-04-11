@@ -6,9 +6,9 @@ import menu from './menu';
 import Header__User from "./__user/header__user";
 import { connect } from 'react-redux';
 
-class Header extends React.Component{
+class Header extends React.Component {
     render() {
-
+        const { user } = this.props;
         return (
             <header className='header'>
                 <div className='header__logo'>
@@ -16,10 +16,16 @@ class Header extends React.Component{
                     <img src={logo} alt=""/>
                 </div>
                 <Header__Navigation menu={menu}/>
-                <Header__User />
+                <Header__User user={user}/>
             </header>
         );
     }
 }
 
-export default connect()(Header);
+function mapStateToProps(state) {
+    return {
+        user: state.common.user
+    }
+}
+
+export default connect(mapStateToProps)(Header);
