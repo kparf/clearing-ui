@@ -14,7 +14,7 @@ export function registerProvider(form, redirect) {
     return async (dispatch) => {
         dispatch(providerRegistrationRequest());
         const response = await api.createProvider(form);
-        if (response.status === 201) {
+        if (response.ok) {
             const user = await response.json();
             dispatch(providerRegistrationSuccess(user));
             if (redirect) {
