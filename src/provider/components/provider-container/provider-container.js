@@ -13,7 +13,7 @@ import ProviderRegistrationConfirmation from "../provider-registration-confirmat
 
 class ProviderContainer extends React.Component {
     render() {
-        let { match } = this.props;
+        const { match } = this.props;
 
         return (
             <div className="provider-container">

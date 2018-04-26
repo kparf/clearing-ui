@@ -1,10 +1,10 @@
 import React from 'react';
 import ProviderRegistration__Form from './__form/provider-registration__form'
-import ProviderRegistration__Title from './__title/provider-registration__title';
 import Loading from '../../../common/components/loading/loading';
 import './provider-registration.css';
 import { connect } from 'react-redux';
-import { registerProvider } from "../../actions/async";
+import { registerProvider } from '../../actions/async';
+import Title from '../../../common/components/title/title';
 
 const REDIRECT_CONFIRMATION_LINK = 'confirmation';
 
@@ -25,7 +25,7 @@ class ProviderRegistration extends React.Component{
 
         return (
             <div className='provider-registration'>
-                <ProviderRegistration__Title/>
+                <Title label='REGISTRATION' comment='Ready to start a new project? Here’s where you reach out.'/>
                 <ProviderRegistration__Form onSubmit={this.submitFormHandler} form={form}/>
                 {loading}
             </div>
