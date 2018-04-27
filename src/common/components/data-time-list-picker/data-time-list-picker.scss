@@ -4,4 +4,14 @@
     .data-time-list-picker__remove-button {
         margin-left: 10px;
     }
+
+    fieldset {
+        border: none;
+        margin: 0;
+    }
+}
+
+.data-time-list-picker__add-item {
+    font-size: 20px;
+    margin-top: 10px;
 }

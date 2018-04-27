@@ -7,8 +7,9 @@ import removeButtonImg from './remove-button.png';
 class DataTimeListPicker__Item extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.removeItemHandler = this.removeItemHandler.bind(this);
+        this.changeItemHandler = this.changeItemHandler.bind(this);
     }
 
     removeItemHandler(e) {
@@ -26,7 +27,8 @@ class DataTimeListPicker__Item extends React.Component {
 
         return (<div className='data-time-list-picker__item'>
             <DateTimePicker value={value} onChange={this.changeItemHandler}/>
-            <button className='data-time-list-picker__remove-button'
+
+            <button tabIndex="-1" className='data-time-list-picker__remove-button'
                     onClick={this.removeItemHandler}>
                 <img src={removeButtonImg}/>
             </button>
@@ -35,7 +37,7 @@ class DataTimeListPicker__Item extends React.Component {
 }
 
 DataTimeListPicker__Item.propTypes = {
-    value: PropTypes.any.isRequired,
+    value: PropTypes.any,
     index: PropTypes.number,
 
     onChange: PropTypes.func,

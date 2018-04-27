@@ -64,11 +64,11 @@ class DataTimeListPicker extends React.Component {
         });
 
         return (
-            <fieldset className='data-time-list-picker'>
+            <fieldset className={`data-time-list-picker ${this.props.className}`}>
                 {dateTimePickers}
                 <Button className='data-time-list-picker__add-item'
                         onClick={this.addItemHandler}>
-                    ADD DATE
+                    + ADD DATE
                 </Button>
             </fieldset>
         )
@@ -76,7 +76,8 @@ class DataTimeListPicker extends React.Component {
 }
 
 DataTimeListPicker.propTypes = {
-    values: PropTypes.array
+    values: PropTypes.array,
+    className: PropTypes.string
 };
 
 export default DataTimeListPicker;
