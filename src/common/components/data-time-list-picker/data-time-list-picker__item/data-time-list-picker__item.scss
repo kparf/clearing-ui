@@ -1,0 +1,15 @@
+.data-time-list-picker__item {
+    display: flex;
+    align-items: center;
+}
+
+.data-time-list-picker__remove-button {
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    background: none;
+    img {
+        height: 25px;
+    }
+    height: 25px;
+}
