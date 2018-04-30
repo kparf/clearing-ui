@@ -49,7 +49,7 @@ class DataTimeListPicker extends React.Component {
 
     render() {
 
-        const { values } = this.props;
+        const { values, title } = this.props;
 
         const dateTimePickers = values.map( (value, index) => {
             return (
@@ -63,10 +63,17 @@ class DataTimeListPicker extends React.Component {
             )
         });
 
+        let legend;
+        if (title) {
+            legend = <legend>{title}</legend>
+        }
+
         return (
             <fieldset className={`data-time-list-picker ${this.props.className}`}>
+                {legend}
                 {dateTimePickers}
                 <Button className='data-time-list-picker__add-item'
+                        type='button'
                         onClick={this.addItemHandler}>
                     + ADD DATE
                 </Button>

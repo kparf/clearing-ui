@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DateTimePicker from 'react-datetime-picker';
-import './data-time-list-picker__item.css';
 import removeButtonImg from './remove-button.png';
+import DataTime from 'react-datetime';
+
+import './data-time-list-picker__item.css';
+import 'react-datetime/css/react-datetime.css';
 
 class DataTimeListPicker__Item extends React.Component {
 
@@ -25,14 +27,15 @@ class DataTimeListPicker__Item extends React.Component {
 
         const {value} = this.props;
 
-        return (<div className='data-time-list-picker__item'>
-            <DateTimePicker value={value} onChange={this.changeItemHandler}/>
-
-            <button tabIndex="-1" className='data-time-list-picker__remove-button'
-                    onClick={this.removeItemHandler}>
-                <img src={removeButtonImg}/>
-            </button>
-        </div>);
+        return (
+            <div className='data-time-list-picker__item'>
+                <DataTime value={value} onChange={this.changeItemHandler}/>
+                <button className='data-time-list-picker__remove-button'
+                        onClick={this.removeItemHandler}
+                        type='button'>
+                    <img src={removeButtonImg}/>
+                </button>
+            </div>);
     }
 }
 

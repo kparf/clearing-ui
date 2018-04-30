@@ -2,6 +2,10 @@
     display: flex;
     align-items: center;
     font-size: 15.5px;
+
+    .react-datetime-picker__clock,.react-datetime-picker__calendar {
+        z-index: 1000;
+    }
 }
 
 .data-time-list-picker__remove-button {

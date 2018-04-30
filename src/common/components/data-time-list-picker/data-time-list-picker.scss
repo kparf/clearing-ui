@@ -1,14 +1,13 @@
+@import 'styles/colors';
+
 .data-time-list-picker {
-    border: none;
 
     .data-time-list-picker__remove-button {
         margin-left: 10px;
     }
 
-    fieldset {
-        border: none;
-        margin: 0;
-    }
+    border: 2px solid $grey-color;
+    border-radius: 4px;
 }
 
 .data-time-list-picker__add-item {
