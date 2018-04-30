@@ -9,7 +9,7 @@ function Checkbox({label, value, onChange, checked}) {
         <input className={classNames({checkbox : !label})}
                value={value}
                type="checkbox"
-               checked={checked}
+               defaultChecked={checked}
                onChange={onChange}/>
     );
 

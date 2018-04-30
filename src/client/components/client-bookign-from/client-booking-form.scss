@@ -1,11 +1,25 @@
-@import "styles/settings";
+@import 'styles/settings';
 
 .client-booking-from {
     position: relative;
     width: $base-form-container-width;
     margin: $base-top-margin auto 0 auto;
+
+    .client-booking-from__recurrence {
+        margin-top: 20px;
+
+        .checkbox {
+            margin-bottom: 10px;
+        }
+    }
 }
 
 .client-booking-from__data-time-picker {
     margin-top: 20px;
+}
+
+.client-booking-from__recurrence {
+    .select {
+        width: 100%;
+    }
 }
