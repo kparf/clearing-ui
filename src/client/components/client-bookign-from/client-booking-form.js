@@ -96,7 +96,7 @@ class ClientBookingForm extends React.Component {
                     </div>
 
                     <Input label='Email' type='email' onChange={this.emailChangeHandler}/>
-                    <Button type='button'>REGISTER</Button>
+                    <Button type='button' className='client-booking-from___consider-button'>CONSIDER PROPOSALS ></Button>
                 </form>
             </div>
         )

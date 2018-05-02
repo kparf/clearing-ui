@@ -6,7 +6,7 @@
     margin: $base-top-margin auto 0 auto;
 
     .client-booking-from__recurrence {
-        margin-top: 20px;
+        margin-top: $base-top-margin;
 
         .checkbox {
             margin-bottom: 10px;
@@ -22,4 +22,8 @@
     .select {
         width: 100%;
     }
+}
+
+.client-booking-from___consider-button {
+    margin-top: $base-top-margin;
 }
