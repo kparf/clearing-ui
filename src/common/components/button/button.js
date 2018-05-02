@@ -1,7 +1,7 @@
 import React from 'react';
 import './button.css';
 
-function Button({children, type, onClick, className}) {
+function Button({children, type, onClick, className = ''}) {
     return (
         <button className={`button ${className}`}
                 type={type}
