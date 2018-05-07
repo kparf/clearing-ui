@@ -1,11 +1,14 @@
+// @flow
 import base64 from 'base-64';
+import avalibaleProviders from '../';
+
 const DATA_URL = 'http://localhost:9000/api';
 
 function fetchServices() {
     return fetch(`${DATA_URL}/services`);
 }
 
-function createProvider(form) {
+function createProvider(form: mixed) {
     return fetch(`${DATA_URL}/providers`, {
         method: 'POST',
         headers: {
@@ -17,14 +20,14 @@ function createProvider(form) {
     });
 }
 
-function verifyProvider(verificationKey) {
+function verifyProvider(verificationKey: string) {
     return fetch(`${DATA_URL}/providers/verify/${verificationKey}`, {
         method: 'POST',
         cache: 'no-cache'
     });
 }
 
-function login({email, password}) {
+function login({email, password} : {email: string, password: string}) {
     const creds = base64.encode(`${email}:${password}`);
     return fetch(`${DATA_URL}/auth`, {
         method: 'POST',
@@ -32,6 +35,10 @@ function login({email, password}) {
             'Authorization': `Basic ${creds}`
         },
     });
+}
+
+function fetchAvalibaleProviders(form) {
+    return null;
 }
 
 export default {
