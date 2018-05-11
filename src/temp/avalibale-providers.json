@@ -1,0 +1,71 @@
+[
+  {
+    "name": "Cool Fancy",
+    "email": "kirill.parfenkov2@gmail.com",
+    "address": "2132 Stockert Hollow Road",
+    "description": "test description",
+    "rating" : 5,
+    "password" : "password",
+    "services" : [
+      "STANDARD_ROOM"
+    ],
+    "createdAt": "2018-04-11T15:09:14.321Z",
+    "updatedAt": "2018-04-11T15:09:14.340Z",
+    "id": "5ace251af0ef2d560e83a2f5"
+  },
+  {
+    "name": "Nulla consequat",
+    "email": "kirill.parfenkov2@gmail.com",
+    "address": "4508 Woodland Drive",
+    "description": "test description",
+    "rating" : 5,
+    "password" : "password",
+    "services" : [
+      "STANDARD_ROOM"
+    ],
+    "createdAt": "2018-04-11T15:09:14.321Z",
+    "updatedAt": "2018-04-11T15:09:14.340Z",
+    "id": "5ace251af0ef2d560e83a2f4"
+  },
+  {
+    "name": "Nam quam nunc",
+    "email": "kirill.parfenkov2@gmail.com",
+    "address": "567 Birch  Street",
+    "description": "test description",
+    "rating" : 5,
+    "password" : "password",
+    "services" : [
+      "STANDARD_ROOM"
+    ],
+    "createdAt": "2018-04-11T15:09:14.321Z",
+    "updatedAt": "2018-04-11T15:09:14.340Z",
+    "id": "5ace251af0ef2d560e83a2f3"
+  },
+  {
+    "name": "Nulla consequat",
+    "email": "kirill.parfenkov2@gmail.com",
+    "address": "4432 Joseph Street",
+    "description": "test description",
+    "rating" : 5,
+    "password" : "password",
+    "services" : [
+      "STANDARD_ROOM"
+    ],
+    "createdAt": "2018-04-11T15:09:14.321Z",
+    "updatedAt": "2018-04-11T15:09:14.340Z",
+    "id": "5ace251af0ef2d560e83a2f2"
+  },
+  {
+    "name": "Sed fringilla",
+    "email": "kirill.parfenkov2@gmail.com",
+    "address": "443 Stiles Street",
+    "description": "test description",
+    "rating" : 5,
+    "services" : [
+      "STANDARD_ROOM"
+    ],
+    "createdAt": "2018-04-11T15:09:14.321Z",
+    "updatedAt": "2018-04-11T15:09:14.340Z",
+    "id": "5ace251af0ef2d560e83a2f1"
+  }
+]

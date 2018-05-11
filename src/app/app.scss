@@ -1,1 +1,7 @@
-@import "../styles/colors";
+@import "styles/colors";
+@import "styles/settings";
+
+.container_center {
+    width: $base-container-width;
+    margin: $base-top-margin auto 0 auto;
+}

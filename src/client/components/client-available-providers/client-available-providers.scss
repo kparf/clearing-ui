@@ -1,0 +1,18 @@
+@import 'styles/settings';
+
+.client-available-providers {
+    width: $base-container-width;
+    margin: $base-top-margin auto 0 auto;
+}
+
+.client-available-providers__line {
+    td {
+        padding: 10px 0;
+    }
+}
+
+
+.client-available-providers__table {
+    width: 100%;
+    text-align: left;
+}
