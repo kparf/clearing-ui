@@ -5,6 +5,9 @@ import Button from '../../../common/components/button/button';
 import { clientConfirmReservationModalOpen } from "../../actions/sync";
 import { clientFetchAvailableProvidersByServices } from "../../actions/async";
 import { connect } from 'react-redux';
+import {
+    Link
+} from 'react-router-dom';
 
 type Props = {
     dispatch: any,
@@ -39,11 +42,10 @@ class ClientAvailableProviders extends React.Component<Props> {
 
     componentDidMount() {
         const { filter, dispatch } = this.props;
-        console.log(filter);
         if (filter.services) {
             dispatch(clientFetchAvailableProvidersByServices(filter.services));
         } else {
-
+            // TODO Add default behavior
         }
     }
 
@@ -64,6 +66,9 @@ class ClientAvailableProviders extends React.Component<Props> {
 
         return (
             <div className='client-available-providers'>
+                <div className='client-available-providers__back-link'>
+                    <Link to='client-booking-from'>&#60; BACK</Link>
+                </div>
                 <table className='client-available-providers__table'>
                     <tbody>
                     <tr>

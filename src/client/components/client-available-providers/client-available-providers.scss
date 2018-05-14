@@ -1,4 +1,5 @@
 @import 'styles/settings';
+@import 'styles/colors';
 
 .client-available-providers {
     width: $base-container-width;
@@ -15,4 +16,14 @@
 .client-available-providers__table {
     width: 100%;
     text-align: left;
+}
+
+.client-available-providers__back-link {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    a {
+        text-decoration: none;
+        color: $secondary-color;
+        font-size: 30px;
+    }
 }
