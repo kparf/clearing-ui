@@ -34,9 +34,9 @@ class ClientBookingForm extends React.Component {
         this.props.dispatch(fetchServices());
     }
 
-    calendarChangeHandler(dataTimes) {
+    calendarChangeHandler(dateTimes) {
         this.props.dispatch(clientBookingFormChange({
-            dataTimes
+            dateTimes
         }));
     }
 
@@ -110,7 +110,7 @@ class ClientBookingForm extends React.Component {
 
                     <DataTimeListPicker className='client-booking-from__data-time-picker'
                                         onChange={this.calendarChangeHandler}
-                                        values={form.dataTimes}
+                                        values={form.dateTimes}
                                         title='Expected Cleaning Time'
                     />
 
@@ -141,7 +141,7 @@ function mapStateToProps(state) {
             email: '',
             address: '',
             description: '',
-            dataTimes: [],
+            dateTimes: [],
             services: [],
             isRecurrent: true,
             recurrentOptions: [

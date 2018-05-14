@@ -33,10 +33,9 @@ class ClientAvailableProviders extends React.Component<Props> {
         super(props);
     }
 
-    createProviderSelectionHandler = (id: string) => {
+    createProviderSelectionHandler = (provider: any) => {
         return (event: any) => {
-            console.log(id);
-            this.props.dispatch(clientConfirmReservationModalOpen());
+            this.props.dispatch(clientConfirmReservationModalOpen(provider));
         }
     };
 
@@ -59,7 +58,7 @@ class ClientAvailableProviders extends React.Component<Props> {
                 <td>{ provider.rating }</td>
                 <td>***</td>
                 <td>
-                    <Button className='button_sm' onClick={this.createProviderSelectionHandler(provider.id)}>ORDER ></Button>
+                    <Button className='button_sm' onClick={this.createProviderSelectionHandler(provider)}>ORDER ></Button>
                 </td>
             </tr>
         ));

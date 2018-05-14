@@ -9,7 +9,9 @@ import {
 } from './actions/sync';
 
 function bookingReducer(state = {
-    form: {}
+    form: {
+        isRecurrent: false
+    }
 }, action) {
     switch (action.type) {
         case CLIENT_BOOKING_FROM_CHANGE:
@@ -26,13 +28,13 @@ function bookingReducer(state = {
 }
 
 function confirmReservationReducer( state = {
-    form: {},
     open: false
 }, action) {
     switch (action.type) {
         case CLIENT_CONFIRM_RESERVATION_MODAL_OPEN:
             return {
                 ...state,
+                provider: action.provider,
                 open: true
             };
         case CLIENT_CONFIRM_RESERVATION_MODAL_CLOSE:

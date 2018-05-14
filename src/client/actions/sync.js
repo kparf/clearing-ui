@@ -17,10 +17,10 @@ export function clientBookingFormChange(form) {
     };
 }
 
-export function clientConfirmReservationModalOpen(form) {
+export function clientConfirmReservationModalOpen(provider) {
     return {
         type: CLIENT_CONFIRM_RESERVATION_MODAL_OPEN,
-        form
+        provider
     };
 }
 
