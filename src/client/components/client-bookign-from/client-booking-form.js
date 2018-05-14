@@ -4,11 +4,14 @@ import Input from '../../../common/components/input/input';
 import TextArea from '../../../common/components/textarea/textarea';
 import Button from '../../../common/components/button/button';
 import Title from '../../../common/components/title/title';
+import Services from '../../../common/components/services/services';
 import { connect } from 'react-redux';
 import { clientBookingFormChange } from '../../actions/sync';
 import DataTimeListPicker from '../../../common/components/data-time-list-picker/data-time-list-picker';
 import Checkbox from '../../../common/components/checkbox/checkbox';
 import Select from '../../../common/components/select/select';
+import { fetchServices } from "../../../common/actions/async";
+import {providerRegistrationFormChange} from "../../../provider/actions/sync";
 
 class ClientBookingForm extends React.Component {
 
@@ -21,6 +24,11 @@ class ClientBookingForm extends React.Component {
         this.submitHandler = this.submitHandler.bind(this);
         this.isRecurrentChangeHandler = this.isRecurrentChangeHandler.bind(this);
         this.recurrentSelectionHandler = this.recurrentSelectionHandler.bind(this);
+        this.servicesChangeHandler = this.servicesChangeHandler.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.dispatch(fetchServices());
     }
 
     calendarChangeHandler(dataTimes) {
@@ -59,13 +67,19 @@ class ClientBookingForm extends React.Component {
         }));
     }
 
+    servicesChangeHandler(e, values) {
+        this.props.dispatch(clientBookingFormChange({
+            services: values
+        }));
+    }
+
     submitHandler(e) {
         console.log("submit");
     }
 
     render() {
 
-        const { form } = this.props;
+        const { form, services, isFetching } = this.props;
 
         let isRecurrentSelectionDisabled = true;
         if ( form.isRecurrent ) {
@@ -79,6 +93,12 @@ class ClientBookingForm extends React.Component {
                 <form role='form' className='client-booking-from__form' onSubmit={this.submitHandler}>
                     <Input label='Address' onChange={this.addressChangeHandler}/>
                     <TextArea label='Description' onChange={this.descriptionChangeHandler}/>
+
+                    <Services value={form.services}
+                              label='Services'
+                              className='client-booking-from__services'
+                              services={services}
+                              onChange={this.servicesChangeHandler}/>
 
                     <DataTimeListPicker className='client-booking-from__data-time-picker'
                                         onChange={this.calendarChangeHandler}
@@ -107,11 +127,14 @@ function mapStateToProps(state) {
 
     const booking = state.client ? state.client.booking: {};
     return {
+        services: state.common.services.items,
+        isFetching: state.common.services.isFetching,
         form: {
             email: '',
             address: '',
             description: '',
             dataTimes: [],
+            services: [],
             isRecurrent: true,
             recurrentOptions: [
                 {
