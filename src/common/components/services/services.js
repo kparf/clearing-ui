@@ -1,8 +1,8 @@
 import React from 'react';
-import './provider-registration__services.css';
-import Checkbox from '../../../../common/components/checkbox/checkbox';
+import './services.css';
+import Checkbox from '../checkbox/checkbox';
 
-class ProviderRegistration__Services extends React.Component {
+class Services extends React.Component {
 
     constructor(props) {
         super(props);
@@ -22,7 +22,7 @@ class ProviderRegistration__Services extends React.Component {
     }
 
     render () {
-        const { label, services, value } = this.props;
+        const { label, services, value, className } = this.props;
 
         const serviceRadioButtons = services.map(service => {
             let checked = false;
@@ -40,7 +40,7 @@ class ProviderRegistration__Services extends React.Component {
         });
 
         return (
-            <fieldset className="provider-registration__services">
+            <fieldset className={`services ${className}`}>
                 <legend>{label}</legend>
                 {serviceRadioButtons}
             </fieldset>
@@ -48,4 +48,4 @@ class ProviderRegistration__Services extends React.Component {
     }
 }
 
-export default ProviderRegistration__Services;
+export default Services;

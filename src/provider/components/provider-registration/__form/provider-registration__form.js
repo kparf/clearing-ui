@@ -3,7 +3,7 @@ import './provider-registration__form.css';
 import Input from '../../../../common/components/input/input';
 import TextArea from '../../../../common/components/textarea/textarea';
 import Button from '../../../../common/components/button/button';
-import ProviderRegistration__Services from '../__services/provider-registration__services';
+import Services from '../../../../common/components/services/services';
 import { connect } from 'react-redux';
 import { fetchServices } from "../../../../common/actions/async";
 import { providerRegistrationFormChange } from "../../../actions/sync";
@@ -80,9 +80,11 @@ class ProviderRegistration__Form extends React.Component {
                     <Input value={form.address} label='Address' onChange={this.addressChangeHandler}/>
                     <TextArea label='Description' onChange={this.descriptionChangeHandler} value={form.description}/>
 
-                    <ProviderRegistration__Services value={form.services}
-                                                    label='Services'
-                                                    services={services} onChange={this.servicesChangeHandler}/>
+                    <Services value={form.services}
+                              label='Services'
+                              className='provider-registration__services'
+                              services={services}
+                              onChange={this.servicesChangeHandler}/>
 
                     <Input value={form.password} label='Password' type='password' onChange={this.passwordChangeHandler}/>
                     <Input value={form.repeatPassword} label='Repeat Password' type='password' onChange={this.repeatPasswordChangeHandler}/>
