@@ -6,12 +6,15 @@ import Button from '../../../common/components/button/button';
 import Title from '../../../common/components/title/title';
 import Services from '../../../common/components/services/services';
 import { connect } from 'react-redux';
-import { clientBookingFormChange } from '../../actions/sync';
+import {
+    clientAvailableProvidersUpdateFilter,
+    clientBookingFormChange
+} from '../../actions/sync';
 import DataTimeListPicker from '../../../common/components/data-time-list-picker/data-time-list-picker';
 import Checkbox from '../../../common/components/checkbox/checkbox';
 import Select from '../../../common/components/select/select';
 import { fetchServices } from "../../../common/actions/async";
-import {providerRegistrationFormChange} from "../../../provider/actions/sync";
+import { push } from 'react-router-redux';
 
 class ClientBookingForm extends React.Component {
 
@@ -74,7 +77,12 @@ class ClientBookingForm extends React.Component {
     }
 
     submitHandler(e) {
-        console.log("submit");
+        e.preventDefault();
+        const { form, dispatch } = this.props;
+        dispatch(clientAvailableProvidersUpdateFilter({
+            services: form.services
+        }));
+        dispatch(push('client-available-providers'));
     }
 
     render() {
@@ -116,7 +124,7 @@ class ClientBookingForm extends React.Component {
                     </div>
 
                     <Input label='Email' type='email' onChange={this.emailChangeHandler}/>
-                    <Button type='button' className='client-booking-from___consider-button'>CONSIDER PROPOSALS ></Button>
+                    <Button type='submit' className='client-booking-from___consider-button'>CONSIDER PROPOSALS ></Button>
                 </form>
             </div>
         )

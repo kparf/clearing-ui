@@ -1,13 +1,15 @@
 // @flow
 import React from 'react';
 import './client-available-providers.css';
-import providers from '../../../temp/avalibale-providers';
 import Button from '../../../common/components/button/button';
 import { clientConfirmReservationModalOpen } from "../../actions/sync";
+import { clientFetchAvailableProvidersByServices } from "../../actions/async";
 import { connect } from 'react-redux';
 
 type Props = {
-    dispatch: any
+    dispatch: any,
+    filter: any,
+    providers: any
 };
 
 // TODO describe it somewhere in the api level
@@ -35,8 +37,18 @@ class ClientAvailableProviders extends React.Component<Props> {
         }
     };
 
+    componentDidMount() {
+        const { filter, dispatch } = this.props;
+        console.log(filter);
+        if (filter.services) {
+            dispatch(clientFetchAvailableProvidersByServices(filter.services));
+        } else {
+
+        }
+    }
+
     render() {
-        // const providers = ...
+        const providers = this.props.providers;
 
         const items = providers.map((provider : Provider) => (
             <tr key={ provider.id } className='client-available-providers__line'>
@@ -69,4 +81,13 @@ class ClientAvailableProviders extends React.Component<Props> {
     }
 }
 
-export default connect()(ClientAvailableProviders);
+function mapStateToProps(state) {
+    const availableProviders = state.client.availableProviders;
+    return {
+        filter: availableProviders.filter,
+        providers: availableProviders.providers,
+        isFetching: availableProviders.isFetching
+    }
+}
+
+export default connect(mapStateToProps)(ClientAvailableProviders);

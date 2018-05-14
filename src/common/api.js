@@ -37,13 +37,17 @@ function login({email, password} : {email: string, password: string}) {
     });
 }
 
-function fetchAvalibaleProviders(form) {
-    return null;
+function searchAvailableProviders({ services }: {services: string[]}) {
+    const serviceList = services.join(',');
+    return fetch(`${DATA_URL}/providers/search?services=${serviceList}`,{
+        cache: 'no-cache'
+    })
 }
 
 export default {
     fetchServices,
     createProvider,
     verifyProvider,
-    login
+    login,
+    searchAvailableProviders
 };
