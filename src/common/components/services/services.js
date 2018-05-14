@@ -6,7 +6,7 @@ class Services extends React.Component {
 
     constructor(props) {
         super(props);
-        this.valueSet = new Set();
+        this.valueSet = new Set(props.value);
         this.changeHandler = this.changeHandler.bind(this);
     }
 
