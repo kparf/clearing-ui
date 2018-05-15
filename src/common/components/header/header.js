@@ -5,8 +5,15 @@ import './header.css';
 import menu from './menu';
 import Header__User from "./__user/header__user";
 import { connect } from 'react-redux';
+import { logoutRequest } from "../../../auth/actions/sync";
 
 class Header extends React.Component {
+
+    logoutHandler = (event) => {
+        event.preventDefault();
+        this.props.dispatch(logoutRequest());
+    };
+
     render() {
         const { user } = this.props;
         return (
@@ -16,7 +23,7 @@ class Header extends React.Component {
                     <img src={logo} alt=""/>
                 </div>
                 <Header__Navigation menu={menu}/>
-                <Header__User user={user}/>
+                <Header__User user={user} onLogout={this.logoutHandler}/>
             </header>
         );
     }

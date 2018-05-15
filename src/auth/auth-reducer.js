@@ -1,6 +1,7 @@
 import {
     AUTHENTICATION_SUCCESS,
-    LOGIN_FROM_CHANGE
+    LOGIN_FROM_CHANGE,
+    LOGOUT_REQUEST
 } from "./actions/sync";
 
 export function authReducer(state = {
@@ -11,6 +12,10 @@ export function authReducer(state = {
             return {
                 ...state,
                 ...action.data.user
+            };
+        case LOGOUT_REQUEST:
+            return {
+                role: 'quest'
             };
         default:
             return state;
@@ -27,10 +32,6 @@ export function loginFormReducer(state = {
             return {
                 ...state,
                 ...action.form
-            };
-        case AUTHENTICATION_SUCCESS:
-            return {
-                ...state
             };
         default:
             return state;
