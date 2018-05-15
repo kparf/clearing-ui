@@ -54,8 +54,15 @@ function createReservation(reservation: any) {
     });
 }
 
+function fetchProviderReservations(providerId: string) {
+    return fetch(`${DATA_URL}/reservations/search?provider=${providerId}`, {
+        cache: 'no-cache'
+    });
+}
+
 export default {
     fetchServices,
+    fetchProviderReservations,
     createProvider,
     verifyProvider,
     login,

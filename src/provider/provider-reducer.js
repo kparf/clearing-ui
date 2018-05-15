@@ -7,14 +7,34 @@ import {
     PROVIDER_REGISTRATION_REQUEST,
     PROVIDER_VERIFICATION_REQUEST,
     PROVIDER_VERIFICATION_SUCCESS,
-    PROVIDER_VERIFICATION_FAIL
+    PROVIDER_VERIFICATION_FAIL,
+    PROVIDER_RESERVATION_LIST_REQUEST,
+    PROVIDER_RESERVATION_LIST_SUCCESS,
+    PROVIDER_RESERVATION_LIST_FAIL,
 } from "./actions/sync";
 
 function reservationReducer(state = {
     isFetching: false,
     items: []
 }, action) {
-    return state;
+    switch (action.type) {
+        case PROVIDER_RESERVATION_LIST_REQUEST:
+            return {
+                ...state,
+                isFetching: true
+            };
+        case PROVIDER_RESERVATION_LIST_SUCCESS:
+            return {
+                ...state,
+                items: action.reservations
+            };
+        case PROVIDER_RESERVATION_LIST_FAIL:
+            return {
+                ...state
+            };
+        default:
+            return state;
+    }
 }
 
 function registrationReducer(state = {

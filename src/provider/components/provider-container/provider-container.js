@@ -3,13 +3,13 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
-import ProviderCalendar from "../provider-calendar/provider-calendar";
-import ProviderOrderDetails from "../provider-order-details/provider-order-details";
-import ProviderReservationList from "../provider-reservation-list/provider-reservation-list";
-import ProviderProfileEdit from "../provider-profile-edit/provider-profile-edit";
-import ProviderRegistration from "../provider-registration/provider-registration";
-import ProviderSchedule from "../provider-schedule/provider-schedule";
-import ProviderRegistrationConfirmation from "../provider-registration-confirmation/provider-registration-confirmation";
+import ProviderCalendar from '../provider-calendar/provider-calendar';
+import ProviderOrderDetails from '../provider-order-details/provider-order-details';
+import ProviderReservationList from '../provider-reservation-list/provider-reservation-list';
+import ProviderProfileEdit from '../provider-profile-edit/provider-profile-edit';
+import ProviderRegistration from '../provider-registration/provider-registration';
+import ProviderSchedule from '../provider-schedule/provider-schedule';
+import ProviderRegistrationConfirmation from '../provider-registration-confirmation/provider-registration-confirmation';
 
 class ProviderContainer extends React.Component {
     render() {

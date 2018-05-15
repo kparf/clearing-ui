@@ -6,6 +6,28 @@ export const PROVIDER_VERIFICATION_REQUEST = 'PROVIDER_VERIFICATION_REQUEST';
 export const PROVIDER_VERIFICATION_SUCCESS = 'PROVIDER_VERIFICATION_SUCCESS';
 export const PROVIDER_VERIFICATION_FAIL = 'PROVIDER_VERIFICATION_FAIL';
 export const PROVIDER_REGISTRATION_FROM_CHANGE = 'PROVIDER_REGISTRATION_FROM_CHANGE';
+export const PROVIDER_RESERVATION_LIST_REQUEST = 'PROVIDER_RESERVATION_LIST_REQUEST';
+export const PROVIDER_RESERVATION_LIST_SUCCESS = 'PROVIDER_RESERVATION_LIST_SUCCESS';
+export const PROVIDER_RESERVATION_LIST_FAIL = 'PROVIDER_RESERVATION_LIST_FAIL';
+
+export function providerReservationListRequest() {
+    return {
+        type : PROVIDER_RESERVATION_LIST_REQUEST
+    }
+}
+
+export function providerReservationListSuccess(reservations) {
+    return {
+        type : PROVIDER_RESERVATION_LIST_SUCCESS,
+        reservations
+    }
+}
+
+export function providerReservationListFail() {
+    return {
+        type : PROVIDER_RESERVATION_LIST_FAIL
+    }
+}
 
 export function providerRegistrationRequest() {
     return {
