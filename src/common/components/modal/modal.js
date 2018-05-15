@@ -9,7 +9,7 @@ function Modal({ children, className, title, open }) {
     if (title) {
         titleElem = (
             <div className='modal__title'>
-                { title }
+                <h2>{ title }</h2>
             </div>
         )
     }

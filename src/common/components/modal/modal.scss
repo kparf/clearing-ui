@@ -31,5 +31,7 @@
     box-shadow: 0 0 10px 2px rgba(0,0,0,0.5);
 }
 .modal__title {
-    margin-bottom: 10px;
+    h2 {
+        margin-top: 10px;
+    }
 }
