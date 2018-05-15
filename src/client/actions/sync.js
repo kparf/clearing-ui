@@ -2,7 +2,9 @@ export const CLIENT_BOOKING_FROM_CHANGE = 'CLIENT_BOOKING_FROM_CHANGE';
 export const CLIENT_CONFIRM_RESERVATION_MODAL_OPEN = 'CLIENT_CONFIRM_RESERVATION_MODAL_OPEN';
 export const CLIENT_CONFIRM_RESERVATION_MODAL_CLOSE = 'CLIENT_CONFIRM_RESERVATION_MODAL_CLOSE';
 export const CLIENT_CONFIRM_RESERVATION_CANCEL = 'CLIENT_CONFIRM_RESERVATION_CANCEL';
-export const CLIENT_CONFIRM_RESERVATION_CONFIRM = 'CLIENT_CONFIRM_RESERVATION_CONFIRM';
+export const CLIENT_CONFIRM_RESERVATION_REQUEST = 'CLIENT_CONFIRM_RESERVATION_REQUEST';
+export const CLIENT_CONFIRM_RESERVATION_SUCCESS = 'CLIENT_CONFIRM_RESERVATION_SUCCESS';
+export const CLIENT_CONFIRM_RESERVATION_FAIL = 'CLIENT_CONFIRM_RESERVATION_FAIL';
 export const CLIENT_FETCH_AVAILABLE_PROVIDERS = 'CLIENT_FETCH_AVAILABLE_PROVIDERS';
 export const CLIENT_ADD_AVAILABLE_PROVIDERS = 'CLIENT_ADD_AVAILABLE_PROVIDERS';
 export const CLIENT_AVAILABLE_PROVIDERS_REQUEST = 'CLIENT_AVAILABLE_PROVIDERS_REQUEST';
@@ -36,10 +38,24 @@ export function clientConfirmReservationCancel() {
     };
 }
 
-export function clientConfirmReservationConfirm(form) {
+export function clientConfirmReservationRequest(reservation) {
     return {
-        type: CLIENT_CONFIRM_RESERVATION_CONFIRM,
-        form
+        type: CLIENT_CONFIRM_RESERVATION_REQUEST,
+        reservation
+    };
+}
+
+export function clientConfirmReservationSuccess(reservation) {
+    return {
+        type: CLIENT_CONFIRM_RESERVATION_SUCCESS,
+        reservation
+    };
+}
+
+export function clientConfirmReservationFail(reservation) {
+    return {
+        type: CLIENT_CONFIRM_RESERVATION_FAIL,
+        reservation
     };
 }
 

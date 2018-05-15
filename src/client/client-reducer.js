@@ -5,7 +5,11 @@ import {
     CLIENT_CONFIRM_RESERVATION_MODAL_CLOSE,
     CLIENT_AVAILABLE_PROVIDERS_REQUEST,
     CLIENT_AVAILABLE_PROVIDERS_FAIL,
-    CLIENT_AVAILABLE_PROVIDERS_UPDATE_FILTER, CLIENT_FETCH_AVAILABLE_PROVIDERS
+    CLIENT_AVAILABLE_PROVIDERS_UPDATE_FILTER,
+    CLIENT_FETCH_AVAILABLE_PROVIDERS,
+    CLIENT_CONFIRM_RESERVATION_REQUEST,
+    CLIENT_CONFIRM_RESERVATION_SUCCESS,
+    CLIENT_CONFIRM_RESERVATION_FAIL
 } from './actions/sync';
 
 function bookingReducer(state = {
@@ -28,7 +32,8 @@ function bookingReducer(state = {
 }
 
 function confirmReservationReducer( state = {
-    open: false
+    open: false,
+    isFetching: false
 }, action) {
     switch (action.type) {
         case CLIENT_CONFIRM_RESERVATION_MODAL_OPEN:
@@ -41,6 +46,21 @@ function confirmReservationReducer( state = {
             return {
                 ...state,
                 open: false
+            };
+        case CLIENT_CONFIRM_RESERVATION_REQUEST:
+            return {
+                ...state,
+                isFetching: true
+            };
+        case CLIENT_CONFIRM_RESERVATION_SUCCESS:
+            return {
+                ...state,
+                isFetching: false
+            };
+        case CLIENT_CONFIRM_RESERVATION_FAIL:
+            return {
+                ...state,
+                isFetching: false
             };
         default:
             return state;

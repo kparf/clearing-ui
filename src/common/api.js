@@ -1,6 +1,5 @@
 // @flow
 import base64 from 'base-64';
-import avalibaleProviders from '../';
 
 const DATA_URL = 'http://localhost:9000/api';
 
@@ -44,10 +43,22 @@ function searchAvailableProviders({ services }: {services: string[]}) {
     })
 }
 
+function createReservation(reservation: any) {
+    return fetch(`${DATA_URL}/reservations`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(reservation)
+    });
+}
+
 export default {
     fetchServices,
     createProvider,
     verifyProvider,
     login,
-    searchAvailableProviders
+    searchAvailableProviders,
+    createReservation
 };

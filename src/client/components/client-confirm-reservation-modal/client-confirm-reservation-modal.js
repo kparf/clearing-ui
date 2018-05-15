@@ -5,6 +5,7 @@ import ClientConfirmReservationModal__Item
 import Button from '../../../common/components/button/button';
 import { connect } from 'react-redux';
 import { clientConfirmReservationModalClose } from "../../actions/sync";
+import { clientConfirmReservation } from "../../actions/async";
 import './client-confirm-reservation-modal.css';
 
 class ClientConfirmReservationModal extends React.Component{
@@ -12,6 +13,21 @@ class ClientConfirmReservationModal extends React.Component{
 
     cancelHandler = (event) => {
         this.props.dispatch(clientConfirmReservationModalClose());
+    };
+
+    confirmHandler = (event) => {
+        const {
+            address, services, description,
+            dateTimes, isRecurrent, selectedRecurrentOption,
+            provider, email
+        } = this.props;
+        this.props.dispatch(clientConfirmReservation({
+            address,
+            description,
+            services,
+            providerId: provider.id,
+            userEmail: email
+        }));
     };
 
     render() {
@@ -27,7 +43,7 @@ class ClientConfirmReservationModal extends React.Component{
                 { fields }
                 <div className='client-confirm-reservation-modal__actions'>
                     <Button onClick={this.cancelHandler}>CANCEL</Button>
-                    <Button>CONFIRM ></Button>
+                    <Button onClick={this.confirmHandler}>CONFIRM ></Button>
                 </div>
             </Modal>
         )
