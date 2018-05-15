@@ -3,7 +3,8 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import './provider-reservation-list.css';
 import './_status/provider-reservation-list_status.css';
-import {fetchProviderReservations} from "../../actions/async";
+import { fetchProviderReservations } from '../../actions/async';
+import MultiSelect from '../../../common/components/multi-select/multi-select';
 
 class ProviderReservationList extends React.Component{
 
@@ -22,6 +23,7 @@ class ProviderReservationList extends React.Component{
             return (
                 <div className="provider-reservation-list">
                     Error. Unable to load data.
+                    <MultiSelect />
                 </div>
             )
         }

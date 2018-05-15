@@ -1,0 +1,27 @@
+@import '../../../styles/colors';
+
+.multi-select {
+
+    &:focus{
+        .multi-select__input {
+            visibility: hidden;
+        }
+
+        .multi-select__list {
+            display: block;
+        }
+    }
+}
+
+.multi-select__input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.multi-select__list {
+    width: 100%;
+    display: none;
+    box-sizing: border-box;
+    list-style-type: none;
+
+}
