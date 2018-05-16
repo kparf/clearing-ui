@@ -5,6 +5,8 @@ import './provider-reservation-list.css';
 import './_status/provider-reservation-list_status.css';
 import { fetchProviderReservations } from '../../actions/async';
 import MultiSelect from '../../../common/components/multi-select/multi-select';
+import MultiSelect__ListItem
+    from "../../../common/components/multi-select/multi-select__list-item/multi-select__list-item";
 
 class ProviderReservationList extends React.Component{
 
@@ -23,7 +25,13 @@ class ProviderReservationList extends React.Component{
             return (
                 <div className="provider-reservation-list">
                     Error. Unable to load data.
-                    <MultiSelect />
+                    <MultiSelect onSave={(val) => {console.log(val)}}>
+                        <MultiSelect__ListItem key='first1' value='first1' >First 1</MultiSelect__ListItem>
+                        <MultiSelect__ListItem key='first2' value='first2' >First 2</MultiSelect__ListItem>
+                        <MultiSelect__ListItem key='first3' value='first3' >First 3</MultiSelect__ListItem>
+                        <MultiSelect__ListItem key='first4' value='first4' >First 4</MultiSelect__ListItem>
+                        <MultiSelect__ListItem key='first5' value='first5' >First 5</MultiSelect__ListItem>
+                    </MultiSelect>
                 </div>
             )
         }

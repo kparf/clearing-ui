@@ -1,33 +1,68 @@
 import React from 'react';
 import './multi-select.css';
+import Button from '../button/button';
+
+const ITEM_CLASS_NAME = 'multi-select__list-item';
 
 class MultiSelect extends React.Component {
 
-    focusHandler = (event) => {
-        console.log('onFocusHandler');
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: new Map(),
+            input: ''
+        };
     };
 
-    blurHandler = (event) => {
-        console.log('onBlurHandler');
+    saveHandler = (event) => {
+        const { onSave } = this.props;
+        this.setState({
+            input: [...this.state.value.values()].join(', ')
+        });
+        event.target.blur();
+
+        if (onSave) {
+            onSave([...this.state.value.keys()])
+        }
     };
 
-    inputClickHandler = (event) => {
-        event.target.parentNode.focus();
+    selectItemHandler = (event) => {
+        if (event.target.classList.contains(ITEM_CLASS_NAME)) {
+
+            const value = event.target.dataset.value;
+            const selected = event.target.dataset.selected;
+            const label = event.target.textContent;
+            const selectedMap = new Map(this.state.value);
+
+            if (selected) {
+                selectedMap.delete(value);
+            } else {
+                selectedMap.set(value, label);
+            }
+            this.setState({
+                value: selectedMap
+            });
+        }
     };
 
     render() {
         return (
-            <div tabIndex={0} className='multi-select' onFocus={this.focusHandler} onBlur={this.blurHandler}>
+            <div tabIndex={0} className='multi-select'>
+
                 <input className='multi-select__input'
                        autoFocus={false}
-                       onClick={this.inputClickHandler}
                        type='text'
-                       readOnly={true}/>
-                <ul className='multi-select__list'>
-                    <li>First item</li>
-                    <li>Second item</li>
-                    <li>Third item</li>
-                    <li>Four item</li>
+                       readOnly={true}
+                       value={this.state.input}
+                />
+
+                <ul className='multi-select__list' onClick={this.selectItemHandler}>
+                    { this.props.children }
+                    <li>
+                        <Button
+                            className='multi-select__save-button'
+                            onClick={this.saveHandler}>SAVE</Button>
+                    </li>
                 </ul>
             </div>
         )

@@ -1,0 +1,23 @@
+@import 'styles/colors';
+
+.multi-select__list-item {
+    padding: 5px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+        background: white;
+        color: $secondary-color;
+    }
+}
+
+.multi-select__list-item[data-selected=true] {
+    background: $secondary-color;
+    color: white;
+
+    &:hover {
+        background: $secondary-color;
+        color: white;
+    }
+}

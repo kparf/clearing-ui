@@ -1,14 +1,11 @@
 @import '../../../styles/colors';
 
 .multi-select {
-
-    &:focus{
-        .multi-select__input {
-            visibility: hidden;
-        }
+    position: relative;
+    &:focus-within{
 
         .multi-select__list {
-            display: block;
+            visibility: visible;
         }
     }
 }
@@ -16,12 +13,32 @@
 .multi-select__input {
     width: 100%;
     box-sizing: border-box;
+    font-size: 18px;
+
+    border: 2px solid $grey-color;
+    padding: 18px 12px;
+    border-radius: 4px;
 }
 
 .multi-select__list {
+    top: 0;
     width: 100%;
-    display: none;
+    font-size: 18px;
+    visibility: hidden;
+    position: absolute;
+    margin: 0;
     box-sizing: border-box;
     list-style-type: none;
 
+    border: 2px solid $grey-color;
+    padding: 13px 7px;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.multi-select__save-button {
+    &.button {
+        font-size: 18px;
+        padding: 15px 5px 5px 5px;
+    }
 }
