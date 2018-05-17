@@ -5,13 +5,13 @@ import './header.css';
 import menu from './menu';
 import Header__User from "./__user/header__user";
 import { connect } from 'react-redux';
-import { logoutRequest } from "../../../auth/actions/sync";
+import { logout } from "../../../auth/actions/async";
 
 class Header extends React.Component {
 
     logoutHandler = (event) => {
         event.preventDefault();
-        this.props.dispatch(logoutRequest());
+        this.props.dispatch(logout());
     };
 
     render() {

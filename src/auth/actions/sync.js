@@ -3,6 +3,20 @@ export const AUTHENTICATION_SUCCESS = 'AUTHENTICATION_SUCCESS';
 export const AUTHENTICATION_FAIL = 'AUTHENTICATION_FAIL';
 export const LOGIN_FROM_CHANGE = 'LOGIN_FROM_CHANGE';
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
+export const AUTHENTICATION_RESTORE = 'AUTHENTICATION_RESTORE';
+export const AUTHENTICATION_RESTORE_FAIL = 'AUTHENTICATION_RESTORE_FAIL';
+
+export function authenticationRestoreRequest() {
+    return {
+        type : AUTHENTICATION_RESTORE
+    }
+}
+
+export function authenticationRestoreFail() {
+    return {
+        type : AUTHENTICATION_RESTORE_FAIL
+    }
+}
 
 export function authenticationRequest() {
     return {
@@ -16,10 +30,10 @@ export function logoutRequest() {
     }
 }
 
-export function authenticationSuccess(data) {
+export function authenticationSuccess(user) {
     return {
         type : AUTHENTICATION_SUCCESS,
-        data
+        user
     }
 }
 

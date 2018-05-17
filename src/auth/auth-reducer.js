@@ -11,7 +11,7 @@ export function authReducer(state = {
         case AUTHENTICATION_SUCCESS:
             return {
                 ...state,
-                ...action.data.user
+                ...action.user
             };
         case LOGOUT_REQUEST:
             return {

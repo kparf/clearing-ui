@@ -18,6 +18,14 @@ class ProviderReservationList extends React.Component{
         }
     };
 
+    componentDidUpdate(prevProps) {
+        const { user, dispatch } = this.props;
+        const prevUser = prevProps.user;
+        if (user.provider !== prevUser.provider) {
+            dispatch(fetchProviderReservations(user.provider));
+        }
+    }
+
     render() {
 
         const { user, reservations } = this.props;
@@ -79,6 +87,7 @@ class ProviderReservationList extends React.Component{
 }
 
 function mapStateToProps( state ) {
+    console.log('mapStateToProps');
     const user = state.common.user;
     const reservations = state.provider.reservations.items || [];
     return {
