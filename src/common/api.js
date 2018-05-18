@@ -54,8 +54,19 @@ function createReservation(reservation: any) {
     });
 }
 
-function fetchProviderReservations(providerId: string) {
-    return fetch(`${DATA_URL}/reservations/search?provider=${providerId}`, {
+function fetchProviderReservations(providerId: string, filter: any = {}) {
+
+    let serviceFilter = '';
+    let stateFilter = '';
+    if (filter.services && filter.services.length > 0) {
+        serviceFilter = `&services=${filter.services.join(',')}`;
+    }
+    if (filter.states && filter.states.length > 0) {
+        stateFilter = `&states=${filter.states.join(',')}`;
+    }
+
+
+    return fetch(`${DATA_URL}/reservations/search?provider=${providerId}${serviceFilter}${stateFilter}`, {
         cache: 'no-cache'
     });
 }

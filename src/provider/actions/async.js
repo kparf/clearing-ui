@@ -41,10 +41,12 @@ export function verifyProvider(key) {
     }
 }
 
-export function fetchProviderReservations(provider, filter) {
-    return async (dispatch) => {
+export function fetchProviderReservations(provider) {
+    return async (dispatch, getStatus) => {
+        const state = getStatus();
+
         dispatch(providerReservationListRequest());
-        const response = await api.fetchProviderReservations(provider);
+        const response = await api.fetchProviderReservations(provider, state.provider.reservations.filter);
 
         if (response.ok) {
             const reservations = await response.json();

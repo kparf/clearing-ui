@@ -21,7 +21,7 @@ class ProviderReservationList extends React.Component{
     };
 
     componentDidUpdate = (prevProps) => {
-        const { user, dispatch, filter } = this.props;
+        const { user, dispatch } = this.props;
         const prevUser = prevProps.user;
         if (user.provider !== prevUser.provider) {
             dispatch(fetchProviderReservations(user.provider));
@@ -30,9 +30,11 @@ class ProviderReservationList extends React.Component{
     };
 
     onChangeHandler = ( changes ) => {
-        const { user, dispatch, filter } = this.props;
-        dispatch(providerReservationFilterChange(changes));
-        dispatch(fetchProviderReservations(user.provider));
+        const { user, dispatch } = this.props;
+        dispatch((dispatch) => {
+            dispatch(providerReservationFilterChange(changes));
+            dispatch(fetchProviderReservations(user.provider));
+        });
     };
 
     render() {

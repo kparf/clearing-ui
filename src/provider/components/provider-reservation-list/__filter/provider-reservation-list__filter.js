@@ -27,7 +27,7 @@ function ProviderReservationList__Filter({services, filter, onChange}) {
                 <MultiSelect__ListItem
                     key='NEW'
                     value='NEW'
-                    selected={ filter.statuses.includes('NEW') }>new</MultiSelect__ListItem>
+                    selected={ filter.statuses.includes('NEW') }>New</MultiSelect__ListItem>
                 <MultiSelect__ListItem
                     key='CONFIRMED'
                     value='CONFIRMED'
