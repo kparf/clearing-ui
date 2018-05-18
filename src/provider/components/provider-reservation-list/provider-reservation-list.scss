@@ -1,17 +1,19 @@
 @import "../../../styles/settings.scss";
 
 .provider-reservation-list {
-  width: $base-container-width;
-  margin: auto auto;
-  table {
-    th {
-      font-size: 30px;
-    }
 
-    th,td {
-      vertical-align: top;
-      padding: 15px;
-      text-align: left;
+    width: $base-container-width;
+    margin: $base-top-margin auto 0 auto;
+
+    table {
+        width: 100%;
+        th {
+            font-size: 30px;
+        }
+        th,td {
+            vertical-align: top;
+            padding: 15px;
+            text-align: left;
+        }
     }
-  }
 }

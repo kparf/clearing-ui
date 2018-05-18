@@ -19,7 +19,6 @@ class MultiSelect__ListItem extends React.Component {
 
     render() {
         const { className = '', value, children, ...otherProps } = this.props;
-
         return (
             <li data-value={value}
                 data-selected={this.state.selected}

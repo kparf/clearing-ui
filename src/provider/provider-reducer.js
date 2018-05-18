@@ -11,11 +11,16 @@ import {
     PROVIDER_RESERVATION_LIST_REQUEST,
     PROVIDER_RESERVATION_LIST_SUCCESS,
     PROVIDER_RESERVATION_LIST_FAIL,
+    PROVIDER_RESERVATION_FILTER_CHANGE,
 } from "./actions/sync";
 
 function reservationReducer(state = {
     isFetching: false,
-    items: []
+    items: [],
+    filter: {
+        services: [],
+        statuses: []
+    }
 }, action) {
     switch (action.type) {
         case PROVIDER_RESERVATION_LIST_REQUEST:
@@ -31,6 +36,14 @@ function reservationReducer(state = {
         case PROVIDER_RESERVATION_LIST_FAIL:
             return {
                 ...state
+            };
+        case PROVIDER_RESERVATION_FILTER_CHANGE:
+            return {
+                ...state,
+                filter: {
+                    ...state.filter,
+                    ...action.changes
+                }
             };
         default:
             return state;

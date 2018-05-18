@@ -6,7 +6,7 @@ import {
 } from "./actions/sync";
 import { authReducer, loginFormReducer } from "../auth/auth-reducer";
 
-function services(state = {
+function serviceReducer(state = {
     isFetching: false,
     items: []
 }, action) {
@@ -26,7 +26,7 @@ function services(state = {
 }
 
 const commonReducer = combineReducers({
-    services,
+    services: serviceReducer,
     user: authReducer,
     loginForm: loginFormReducer
 });

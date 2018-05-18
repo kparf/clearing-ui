@@ -8,16 +8,29 @@ class MultiSelect extends React.Component {
 
     constructor(props) {
         super(props);
+        const value = this.getSelectedItems(props.children)
         this.state = {
-            value: new Map(),
-            input: ''
+            value,
+            input: this.formatValue(value)
         };
     };
 
+    getSelectedItems = (children) => {
+        return children.filter(child => child.props.selected)
+                            .reduce((map, child) => {
+                                 return map.set(child.props.value, child.props.children);
+                             }, new Map());
+    };
+
+    formatValue = (value) => {
+        return [...value.values()].join(', ')
+    };
+
     saveHandler = (event) => {
+        console.log(event);
         const { onSave } = this.props;
         this.setState({
-            input: [...this.state.value.values()].join(', ')
+            input: this.formatValue(this.state.value)
         });
         event.target.blur();
 
@@ -30,7 +43,7 @@ class MultiSelect extends React.Component {
         if (event.target.classList.contains(ITEM_CLASS_NAME)) {
 
             const value = event.target.dataset.value;
-            const selected = event.target.dataset.selected;
+            const selected = event.target.dataset.selected === 'true';
             const label = event.target.textContent;
             const selectedMap = new Map(this.state.value);
 

@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import './provider-reservation-list.css';
 import './_status/provider-reservation-list_status.css';
 import { fetchProviderReservations } from '../../actions/async';
-import MultiSelect from '../../../common/components/multi-select/multi-select';
-import MultiSelect__ListItem
-    from "../../../common/components/multi-select/multi-select__list-item/multi-select__list-item";
+import ProviderReservationList__Filter from "./__filter/provider-reservation-list__filter";
+import Title from "../../../common/components/title/title";
+import {fetchServices} from "../../../common/actions/async";
+import {providerReservationFilterChange} from "../../actions/sync";
 
 class ProviderReservationList extends React.Component{
 
@@ -15,31 +16,32 @@ class ProviderReservationList extends React.Component{
         const { user, dispatch } = this.props;
         if (user.provider) {
             dispatch(fetchProviderReservations(user.provider));
+            dispatch(fetchServices());
         }
     };
 
-    componentDidUpdate(prevProps) {
-        const { user, dispatch } = this.props;
+    componentDidUpdate = (prevProps) => {
+        const { user, dispatch, filter } = this.props;
         const prevUser = prevProps.user;
         if (user.provider !== prevUser.provider) {
             dispatch(fetchProviderReservations(user.provider));
+            dispatch(fetchServices());
         }
-    }
+    };
+
+    onChangeHandler = ( changes ) => {
+        const { user, dispatch, filter } = this.props;
+        dispatch(providerReservationFilterChange(changes));
+        dispatch(fetchProviderReservations(user.provider));
+    };
 
     render() {
 
-        const { user, reservations } = this.props;
+        const { user, reservations, services, filter } = this.props;
         if (!user.provider) {
             return (
                 <div className="provider-reservation-list">
                     Error. Unable to load data.
-                    <MultiSelect onSave={(val) => {console.log(val)}}>
-                        <MultiSelect__ListItem key='first1' value='first1' >First 1</MultiSelect__ListItem>
-                        <MultiSelect__ListItem key='first2' value='first2' >First 2</MultiSelect__ListItem>
-                        <MultiSelect__ListItem key='first3' value='first3' >First 3</MultiSelect__ListItem>
-                        <MultiSelect__ListItem key='first4' value='first4' >First 4</MultiSelect__ListItem>
-                        <MultiSelect__ListItem key='first5' value='first5' >First 5</MultiSelect__ListItem>
-                    </MultiSelect>
                 </div>
             )
         }
@@ -68,6 +70,8 @@ class ProviderReservationList extends React.Component{
 
         return (
             <div className="provider-reservation-list">
+                <Title label='RESERVATION LIST'/>
+                <ProviderReservationList__Filter  onChange={this.onChangeHandler} services={services} filter={filter}/>
                 <table>
                     <thead>
                     <tr>
@@ -87,12 +91,15 @@ class ProviderReservationList extends React.Component{
 }
 
 function mapStateToProps( state ) {
-    console.log('mapStateToProps');
     const user = state.common.user;
     const reservations = state.provider.reservations.items || [];
+    const filter = state.provider.reservations.filter || {};
+    const services = state.common.services.items || [];
     return {
         user,
-        reservations
+        reservations,
+        services,
+        filter
     }
 }
 

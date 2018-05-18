@@ -34,6 +34,10 @@
     padding: 13px 7px;
     border-radius: 4px;
     background-color: white;
+    z-index: 100;
+    li {
+        line-height: normal;
+    }
 }
 
 .multi-select__save-button {
