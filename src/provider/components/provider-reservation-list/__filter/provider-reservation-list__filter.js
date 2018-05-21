@@ -9,9 +9,6 @@ const LabelMultiSelect = label(MultiSelect);
 
 function ProviderReservationList__Filter({services, filter, onChange}) {
 
-    console.log('filter');
-    console.log(filter);
-
     return (
         <div className='provider-reservation-list__filter'>
             <LabelMultiSelect label='Services' onSave={(val) => onChange({ services: val })}>

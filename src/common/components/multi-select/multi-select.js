@@ -27,7 +27,6 @@ class MultiSelect extends React.Component {
     };
 
     saveHandler = (event) => {
-        console.log(event);
         const { onSave } = this.props;
         this.setState({
             input: this.formatValue(this.state.value)

@@ -4,7 +4,7 @@ import {
     Switch
 } from 'react-router-dom';
 import ProviderCalendar from '../provider-calendar/provider-calendar';
-import ProviderOrderDetails from '../provider-order-details/provider-order-details';
+import ProviderReservationDetails from '../provider-reservation-details/provider-reservation-details';
 import ProviderReservationList from '../provider-reservation-list/provider-reservation-list';
 import ProviderProfileEdit from '../provider-profile-edit/provider-profile-edit';
 import ProviderRegistration from '../provider-registration/provider-registration';
@@ -19,7 +19,7 @@ class ProviderContainer extends React.Component {
             <div className="provider-container">
                 <Switch>
                     <Route path={match.path + '/calendar'} component={ProviderCalendar}/>
-                    <Route path={match.path + '/order-details'} component={ProviderOrderDetails}/>
+                    <Route path={match.path + '/reservation-details'} component={ProviderReservationDetails}/>
                     <Route path={match.path + '/reservation-list'} component={ProviderReservationList}/>
                     <Route path={match.path + '/profile-edit'} component={ProviderProfileEdit}/>
                     <Route path={match.path + '/registration/confirmation/:verificationKey'} component={ProviderRegistrationConfirmation}/>

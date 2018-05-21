@@ -6,8 +6,9 @@ import './_status/provider-reservation-list_status.css';
 import { fetchProviderReservations } from '../../actions/async';
 import ProviderReservationList__Filter from "./__filter/provider-reservation-list__filter";
 import Title from "../../../common/components/title/title";
-import {fetchServices} from "../../../common/actions/async";
-import {providerReservationFilterChange} from "../../actions/sync";
+import { fetchServices } from "../../../common/actions/async";
+import { providerReservationFilterChange } from "../../actions/sync";
+import { push } from 'react-router-redux';
 
 class ProviderReservationList extends React.Component{
 
@@ -37,12 +38,16 @@ class ProviderReservationList extends React.Component{
         });
     };
 
+    onSelectItemHandler = ( reservation ) => {
+        this.props.dispatch( push(`reservation-details/${reservation.id}`));
+    };
+
     render() {
 
         const { user, reservations, services, filter } = this.props;
         if (!user.provider) {
             return (
-                <div className="provider-reservation-list">
+                <div className='provider-reservation-list'>
                     Error. Unable to load data.
                 </div>
             )
@@ -55,13 +60,14 @@ class ProviderReservationList extends React.Component{
             }
 
             const statusClasses = classNames({
-                "provider-reservation-list_status-new" : reservation.status === "NEW",
-                "provider-reservation-list_status-confirmed": reservation.status === "CONFIRMED",
-                "provider-reservation-list_status-cancelled": reservation.status === "CANCELLED"
+                'provider-reservation-list_status-new' : reservation.status === 'NEW',
+                'provider-reservation-list_status-confirmed': reservation.status === 'CONFIRMED',
+                'provider-reservation-list_status-cancelled': reservation.status === 'CANCELLED'
             });
 
             return (
-                <tr key={reservation.id} className="provider-reservation-list__item">
+                <tr key={reservation.id} className="provider-reservation-list__item"
+                    onClick={this.onSelectItemHandler.bind(this, reservation)}>
                     <td className={statusClasses}>{reservation.status}</td>
                     <td>{reservation.address}</td>
                     <td>{reservation.description}</td>

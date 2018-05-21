@@ -1,6 +1,7 @@
 import React from 'react';
+import './provider-reservation-details.css';
 
-function ProviderOrderDetails() {
+function ProviderReservationDetails() {
     return (
         <div className='provider-order-details'>
             Provider Order Details Form!
@@ -8,4 +9,4 @@ function ProviderOrderDetails() {
     )
 }
 
-export default ProviderOrderDetails;
+export default ProviderReservationDetails;

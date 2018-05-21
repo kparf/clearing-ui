@@ -1,4 +1,5 @@
-@import "../../../styles/settings.scss";
+@import "styles/settings";
+@import "styles/colors";
 
 .provider-reservation-list {
 
@@ -14,6 +15,17 @@
             vertical-align: top;
             padding: 15px;
             text-align: left;
+        }
+
+        tr {
+            transition: background-color 0.5s;
+        }
+    }
+
+    tbody {
+        tr:hover {
+            cursor: pointer;
+            background-color: rgba(222,25,58, 0.1);
         }
     }
 }

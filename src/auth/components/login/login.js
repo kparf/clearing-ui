@@ -30,7 +30,6 @@ class Login extends React.Component {
     submit(e) {
         e.preventDefault();
         const { email, password, dispatch } = this.props;
-        console.log(this.props);
         dispatch(loginRequest({
                 email,
                 password
