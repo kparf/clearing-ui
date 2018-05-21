@@ -61,8 +61,8 @@ function fetchProviderReservations(providerId: string, filter: any = {}) {
     if (filter.services && filter.services.length > 0) {
         serviceFilter = `&services=${filter.services.join(',')}`;
     }
-    if (filter.states && filter.states.length > 0) {
-        stateFilter = `&states=${filter.states.join(',')}`;
+    if (filter.statuses && filter.statuses.length > 0) {
+        stateFilter = `&statuses=${filter.statuses.join(',')}`;
     }
 
 
