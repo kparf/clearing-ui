@@ -10,6 +10,29 @@ export const PROVIDER_RESERVATION_LIST_REQUEST = 'PROVIDER_RESERVATION_LIST_REQU
 export const PROVIDER_RESERVATION_LIST_SUCCESS = 'PROVIDER_RESERVATION_LIST_SUCCESS';
 export const PROVIDER_RESERVATION_LIST_FAIL = 'PROVIDER_RESERVATION_LIST_FAIL';
 export const PROVIDER_RESERVATION_FILTER_CHANGE = 'PROVIDER_RESERVATION_FILTER_CHANGE';
+export const PROVIDER_RESERVATION_DETAILS_REQUEST = 'PROVIDER_RESERVATION_DETAILS_REQUEST';
+export const PROVIDER_RESERVATION_DETAILS_SUCCESS = 'PROVIDER_RESERVATION_DETAILS_SUCCESS';
+export const PROVIDER_RESERVATION_DETAILS_FAIL = 'PROVIDER_RESERVATION_DETAILS_FAIL';
+
+
+export function providerReservationDetailsFail() {
+    return {
+        type: PROVIDER_RESERVATION_DETAILS_FAIL
+    }
+}
+
+export function providerReservationDetailsSuccess(reservation) {
+    return {
+        type: PROVIDER_RESERVATION_DETAILS_SUCCESS,
+        reservation
+    }
+}
+
+export function providerReservationDetailsRequest() {
+    return {
+        type: PROVIDER_RESERVATION_DETAILS_REQUEST
+    }
+}
 
 export function providerReservationFilterChange(changes) {
     return {

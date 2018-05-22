@@ -7,11 +7,27 @@ import {
     providerVerificationFail,
     providerReservationListRequest,
     providerReservationListSuccess,
-    providerReservationListFail
+    providerReservationListFail,
+    providerReservationDetailsRequest,
+    providerReservationDetailsFail,
+    providerReservationDetailsSuccess
 } from './sync';
 import api from '../../common/api';
 import { push } from 'react-router-redux';
 
+
+export function fetchReservationDetails(id) {
+    return async (dispatch) => {
+        dispatch(providerReservationDetailsRequest());
+        const response = await api.fetchReservationDetails(id);
+        if (response.ok) {
+            const reservation = await response.json();
+            dispatch(providerReservationDetailsSuccess(reservation));
+        } else {
+            dispatch(providerReservationDetailsFail());
+        }
+    }
+}
 
 export function registerProvider(form, redirect) {
     return async (dispatch) => {

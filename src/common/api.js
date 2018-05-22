@@ -71,6 +71,12 @@ function fetchProviderReservations(providerId: string, filter: any = {}) {
     });
 }
 
+function fetchReservationDetails(id: string) {
+    return fetch(`${DATA_URL}/reservations/${id}`, {
+        cache: 'no-cache'
+    });
+}
+
 export default {
     fetchServices,
     fetchProviderReservations,
@@ -78,5 +84,6 @@ export default {
     verifyProvider,
     login,
     searchAvailableProviders,
-    createReservation
+    createReservation,
+    fetchReservationDetails
 };

@@ -12,7 +12,36 @@ import {
     PROVIDER_RESERVATION_LIST_SUCCESS,
     PROVIDER_RESERVATION_LIST_FAIL,
     PROVIDER_RESERVATION_FILTER_CHANGE,
+    PROVIDER_RESERVATION_DETAILS_REQUEST,
+    PROVIDER_RESERVATION_DETAILS_SUCCESS,
+    PROVIDER_RESERVATION_DETAILS_FAIL
 } from "./actions/sync";
+
+function reservationDetailsRouter(state = {}, action) {
+    switch(action.type) {
+        case PROVIDER_RESERVATION_DETAILS_REQUEST: {
+            return {
+                ...state,
+                isFetching: true
+            }
+        }
+        case PROVIDER_RESERVATION_DETAILS_SUCCESS: {
+            return {
+                ...state,
+                ...action.reservation,
+                isFetching: false,
+            }
+        }
+        case PROVIDER_RESERVATION_DETAILS_FAIL: {
+            return {
+                ...state,
+                isFetching: false
+            }
+        }
+        default:
+            return state;
+    }
+}
 
 function reservationReducer(state = {
     isFetching: false,
@@ -118,6 +147,7 @@ function registrationReducer(state = {
 }
 
 const providerReducer = combineReducers({
+    reservationDetails: reservationDetailsRouter,
     reservations: reservationReducer,
     registration: registrationReducer
 });

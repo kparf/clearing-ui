@@ -19,7 +19,7 @@ class ProviderContainer extends React.Component {
             <div className="provider-container">
                 <Switch>
                     <Route path={match.path + '/calendar'} component={ProviderCalendar}/>
-                    <Route path={match.path + '/reservation-details'} component={ProviderReservationDetails}/>
+                    <Route path={match.path + '/reservation-details/:id'} component={ProviderReservationDetails}/>
                     <Route path={match.path + '/reservation-list'} component={ProviderReservationList}/>
                     <Route path={match.path + '/profile-edit'} component={ProviderProfileEdit}/>
                     <Route path={match.path + '/registration/confirmation/:verificationKey'} component={ProviderRegistrationConfirmation}/>
