@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import ProviderReservationDetails__Item from './provider-order-details__item/provider-order-details__item';
 import Button from "../../../common/components/button/button";
 import Title from "../../../common/components/title/title";
+import {
+    providerReservationDetailsCancelCommentChange
+} from "../../actions/sync";
+import TextArea from "../../../common/components/textarea/textarea";
 
 class ProviderReservationDetails extends React.Component {
 
@@ -14,7 +18,7 @@ class ProviderReservationDetails extends React.Component {
     }
 
     cancelHandler = () => {
-
+        this.props.dispatch(providerReservationDetailsCancelCommentChange(true));
     };
 
     confirmHandler = () => {
@@ -22,32 +26,69 @@ class ProviderReservationDetails extends React.Component {
         dispatch(providerConfirmReservation(reservation.id));
     };
 
+    confirmCancelHandler = () => {
+
+    };
+
     render() {
-        const { match, reservation } = this.props;
+        const { match, reservation, cancelComment } = this.props;
         let serviceList = '';
         if(reservation.services) {
             serviceList = reservation.services.join(',');
         }
 
+        const actionSection = this.generateActionSection(reservation, cancelComment);
+
         return (
             <div className='provider-reservation-details'>
                 <Title label='RESERVATION DETAILS'/>
+                <ProviderReservationDetails__Item label='Status' data={reservation.status}/>
                 <ProviderReservationDetails__Item label='Email' data={reservation.userEmail}/>
                 <ProviderReservationDetails__Item label='Address' data={reservation.address}/>
                 <ProviderReservationDetails__Item label='Description' data={reservation.description}/>
                 <ProviderReservationDetails__Item label='Services' data={serviceList}/>
-                <div className='client-confirm-reservation-modal__actions'>
-                    <Button onClick={this.cancelHandler}>CANCEL</Button>
-                    <Button onClick={this.confirmHandler}>CONFIRM ></Button>
-                </div>
+
+                { actionSection }
             </div>
         )
+    }
+
+    generateActionSection = (reservation, cancelComment) => {
+
+        if (cancelComment.open) {
+            return (
+                <div className='provider-reservation-details__actions'>
+                    <TextArea label='Comment'/>
+                    <Button onClick={this.confirmCancelHandler}>CONFORM CANCEL</Button>
+                </div>
+            );
+        }
+
+        if (reservation.status === 'NEW') {
+            return (
+                <div className='provider-reservation-details__actions'>
+                    <Button onClick={this.confirmHandler}>CONFIRM ></Button>
+                    <Button onClick={this.cancelHandler}>CANCEL</Button>
+                </div>
+            );
+        }
+
+        if (reservation.status === 'CONFIRMED') {
+            return (
+                <div className='provider-reservation-details__actions'>
+                    <Button onClick={this.cancelHandler}>CANCEL</Button>
+                </div>
+            );
+        }
+
+        return false;
     }
 }
 
 function mapStateToProps( state ) {
     return {
-        reservation: state.provider.reservationDetails
+        reservation: state.provider.reservationDetails,
+        cancelComment: state.provider.reservationDetails.cancelComment
     }
 }
 

@@ -20,44 +20,25 @@ import {
     PROVIDER_RESERVATION_DETAILS_CANCEL_SUCCESS,
     PROVIDER_RESERVATION_DETAILS_CANCEL_FAIL,
     PROVIDER_RESERVATION_DETAILS_CONFIRM_SUCCESS,
-    PROVIDER_RESERVATION_DETAILS_CONFIRM_FAIL
+    PROVIDER_RESERVATION_DETAILS_CONFIRM_FAIL,
+    PROVIDER_RESERVATION_DETAILS_COMMENT_CHANGE
 } from "./actions/sync";
 
-function reservationDetailsRouter(state = {}, action) {
-    switch(action.type) {
-        case PROVIDER_RESERVATION_DETAILS_REQUEST: {
-            return {
-                ...state,
-                isFetching: true
-            }
-        }
-        case PROVIDER_RESERVATION_DETAILS_SUCCESS: {
-            return {
-                ...state,
-                ...action.reservation,
-                isFetching: false,
-            }
-        }
-        case PROVIDER_RESERVATION_DETAILS_FAIL: {
-            return {
-                ...state,
-                isFetching: false
-            }
-        }
-        default:
-            return state;
-    }
-}
-
-function reservationReducer(state = {
-    isFetching: false,
-    items: [],
-    filter: {
-        services: [],
-        statuses: []
+function reservationDetailsRouter(state = {
+    cancelComment: {
+        open: false
     }
 }, action) {
-    switch (action.type) {
+    switch(action.type) {
+        case PROVIDER_RESERVATION_DETAILS_COMMENT_CHANGE: {
+            return {
+                ...state,
+                cancelComment: {
+                    open: action.open,
+                    value: action.value
+                }
+            }
+        }
         case PROVIDER_RESERVATION_DETAILS_CONFIRM_SUCCESS: {
             return {
                 ...state,
@@ -95,6 +76,39 @@ function reservationReducer(state = {
                 isFetching: true
             }
         }
+        case PROVIDER_RESERVATION_DETAILS_REQUEST: {
+            return {
+                ...state,
+                isFetching: true
+            }
+        }
+        case PROVIDER_RESERVATION_DETAILS_SUCCESS: {
+            return {
+                ...state,
+                ...action.reservation,
+                isFetching: false,
+            }
+        }
+        case PROVIDER_RESERVATION_DETAILS_FAIL: {
+            return {
+                ...state,
+                isFetching: false
+            }
+        }
+        default:
+            return state;
+    }
+}
+
+function reservationReducer(state = {
+    isFetching: false,
+    items: [],
+    filter: {
+        services: [],
+        statuses: []
+    }
+}, action) {
+    switch (action.type) {
         case PROVIDER_RESERVATION_LIST_REQUEST:
             return {
                 ...state,
