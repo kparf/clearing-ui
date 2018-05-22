@@ -13,7 +13,51 @@ export const PROVIDER_RESERVATION_FILTER_CHANGE = 'PROVIDER_RESERVATION_FILTER_C
 export const PROVIDER_RESERVATION_DETAILS_REQUEST = 'PROVIDER_RESERVATION_DETAILS_REQUEST';
 export const PROVIDER_RESERVATION_DETAILS_SUCCESS = 'PROVIDER_RESERVATION_DETAILS_SUCCESS';
 export const PROVIDER_RESERVATION_DETAILS_FAIL = 'PROVIDER_RESERVATION_DETAILS_FAIL';
+export const PROVIDER_RESERVATION_DETAILS_CONFIRM = 'PROVIDER_RESERVATION_DETAILS_CONFIRM';
+export const PROVIDER_RESERVATION_DETAILS_CANCEL = 'PROVIDER_RESERVATION_DETAILS_CANCEL';
 
+export const PROVIDER_RESERVATION_DETAILS_CONFIRM_SUCCESS = 'PROVIDER_RESERVATION_DETAILS_CONFIRM_SUCCESS';
+export const PROVIDER_RESERVATION_DETAILS_CANCEL_SUCCESS = 'PROVIDER_RESERVATION_DETAILS_CANCEL_SUCCESS';
+export const PROVIDER_RESERVATION_DETAILS_CONFIRM_FAIL = 'PROVIDER_RESERVATION_DETAILS_CONFIRM_FAIL';
+export const PROVIDER_RESERVATION_DETAILS_CANCEL_FAIL = 'PROVIDER_RESERVATION_DETAILS_CANCEL_FAIL';
+
+
+export function providerReservationDetailsConfirmFail() {
+    return {
+        type: PROVIDER_RESERVATION_DETAILS_CONFIRM_FAIL,
+    }
+}
+
+export function providerReservationDetailsCancelFail() {
+    return {
+        type: PROVIDER_RESERVATION_DETAILS_CANCEL_FAIL,
+    }
+}
+
+export function providerReservationDetailsConfirmSuccess(reservation) {
+    return {
+        type: PROVIDER_RESERVATION_DETAILS_CONFIRM_SUCCESS,
+        reservation
+    }
+}
+
+export function providerReservationDetailsCancelSuccess() {
+    return {
+        type: PROVIDER_RESERVATION_DETAILS_CANCEL_SUCCESS,
+    }
+}
+
+export function providerReservationDetailsConfirm() {
+    return {
+        type: PROVIDER_RESERVATION_DETAILS_CONFIRM
+    }
+}
+
+export function providerReservationDetailsCancel() {
+    return {
+        type: PROVIDER_RESERVATION_DETAILS_CANCEL
+    }
+}
 
 export function providerReservationDetailsFail() {
     return {

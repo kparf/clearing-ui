@@ -14,7 +14,13 @@ import {
     PROVIDER_RESERVATION_FILTER_CHANGE,
     PROVIDER_RESERVATION_DETAILS_REQUEST,
     PROVIDER_RESERVATION_DETAILS_SUCCESS,
-    PROVIDER_RESERVATION_DETAILS_FAIL
+    PROVIDER_RESERVATION_DETAILS_FAIL,
+    PROVIDER_RESERVATION_DETAILS_CONFIRM,
+    PROVIDER_RESERVATION_DETAILS_CANCEL,
+    PROVIDER_RESERVATION_DETAILS_CANCEL_SUCCESS,
+    PROVIDER_RESERVATION_DETAILS_CANCEL_FAIL,
+    PROVIDER_RESERVATION_DETAILS_CONFIRM_SUCCESS,
+    PROVIDER_RESERVATION_DETAILS_CONFIRM_FAIL
 } from "./actions/sync";
 
 function reservationDetailsRouter(state = {}, action) {
@@ -52,6 +58,43 @@ function reservationReducer(state = {
     }
 }, action) {
     switch (action.type) {
+        case PROVIDER_RESERVATION_DETAILS_CONFIRM_SUCCESS: {
+            return {
+                ...state,
+                ...action.reservation,
+                isFetching: false
+            }
+        }
+        case PROVIDER_RESERVATION_DETAILS_CONFIRM_FAIL: {
+            return {
+                ...state,
+                isFetching: false
+            }
+        }
+        case PROVIDER_RESERVATION_DETAILS_CANCEL_SUCCESS: {
+            return {
+                ...state,
+                isFetching: false
+            }
+        }
+        case PROVIDER_RESERVATION_DETAILS_CANCEL_FAIL: {
+            return {
+                ...state,
+                isFetching: false
+            }
+        }
+        case PROVIDER_RESERVATION_DETAILS_CONFIRM: {
+            return {
+                ...state,
+                isFetching: true
+            }
+        }
+        case PROVIDER_RESERVATION_DETAILS_CANCEL: {
+            return {
+                ...state,
+                isFetching: true
+            }
+        }
         case PROVIDER_RESERVATION_LIST_REQUEST:
             return {
                 ...state,

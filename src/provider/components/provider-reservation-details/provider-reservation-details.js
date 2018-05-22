@@ -1,6 +1,6 @@
 import React from 'react';
 import './provider-reservation-details.css';
-import { fetchReservationDetails } from "../../actions/async";
+import {fetchReservationDetails, providerConfirmReservation} from "../../actions/async";
 import { connect } from 'react-redux';
 import ProviderReservationDetails__Item from './provider-order-details__item/provider-order-details__item';
 import Button from "../../../common/components/button/button";
@@ -18,7 +18,8 @@ class ProviderReservationDetails extends React.Component {
     };
 
     confirmHandler = () => {
-
+        const { dispatch, reservation } = this.props;
+        dispatch(providerConfirmReservation(reservation.id));
     };
 
     render() {

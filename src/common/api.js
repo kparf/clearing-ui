@@ -77,6 +77,12 @@ function fetchReservationDetails(id: string) {
     });
 }
 
+function providerConfirmReservation(id: string) {
+    return fetch(`${DATA_URL}/reservations/confirm/${id}`, {
+        method: 'PUT'
+    });
+}
+
 export default {
     fetchServices,
     fetchProviderReservations,
@@ -85,5 +91,6 @@ export default {
     login,
     searchAvailableProviders,
     createReservation,
-    fetchReservationDetails
+    fetchReservationDetails,
+    providerConfirmReservation
 };
