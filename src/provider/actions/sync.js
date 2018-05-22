@@ -49,9 +49,10 @@ export function providerReservationDetailsConfirmSuccess(reservation) {
     }
 }
 
-export function providerReservationDetailsCancelSuccess() {
+export function providerReservationDetailsCancelSuccess(reservation) {
     return {
         type: PROVIDER_RESERVATION_DETAILS_CANCEL_SUCCESS,
+        reservation
     }
 }
 

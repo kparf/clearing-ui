@@ -78,8 +78,19 @@ function fetchReservationDetails(id: string) {
 }
 
 function providerConfirmReservation(id: string) {
-    return fetch(`${DATA_URL}/reservations/confirm/${id}`, {
+    return fetch(`${DATA_URL}/reservations/${id}/confirm`, {
         method: 'PUT'
+    });
+}
+
+function providerCancelReservation(id: string, request: any) {
+    return fetch(`${DATA_URL}/reservations/${id}/cancel`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)
     });
 }
 
@@ -92,5 +103,6 @@ export default {
     searchAvailableProviders,
     createReservation,
     fetchReservationDetails,
-    providerConfirmReservation
+    providerConfirmReservation,
+    providerCancelReservation
 };

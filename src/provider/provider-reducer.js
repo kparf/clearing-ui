@@ -55,6 +55,7 @@ function reservationDetailsRouter(state = {
         case PROVIDER_RESERVATION_DETAILS_CANCEL_SUCCESS: {
             return {
                 ...state,
+                ...action.reservation,
                 isFetching: false
             }
         }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './provider-reservation-details.css';
-import {fetchReservationDetails, providerConfirmReservation} from "../../actions/async";
+import {fetchReservationDetails, providerCancelReservation, providerConfirmReservation} from "../../actions/async";
 import { connect } from 'react-redux';
 import ProviderReservationDetails__Item from './provider-order-details__item/provider-order-details__item';
 import Button from "../../../common/components/button/button";
@@ -27,7 +27,15 @@ class ProviderReservationDetails extends React.Component {
     };
 
     confirmCancelHandler = () => {
+        this.props.dispatch(providerCancelReservation());
+    };
 
+    abortCancelHandler = () => {
+        this.props.dispatch(providerReservationDetailsCancelCommentChange(false, ''));
+    };
+
+    cancelCommentChangeHandler = (e) => {
+        this.props.dispatch(providerReservationDetailsCancelCommentChange(true, e.currentTarget.value));
     };
 
     render() {
@@ -58,8 +66,14 @@ class ProviderReservationDetails extends React.Component {
         if (cancelComment.open) {
             return (
                 <div className='provider-reservation-details__actions'>
-                    <TextArea label='Comment'/>
-                    <Button onClick={this.confirmCancelHandler}>CONFORM CANCEL</Button>
+                    <TextArea
+                        className='provider-reservation-details__comment'
+                        label='Comment'
+                        onChange={this.cancelCommentChangeHandler}
+                        value={cancelComment.value}
+                    />
+                    <Button onClick={this.confirmCancelHandler}>CONFIRM CANCEL</Button>
+                    <Button onClick={this.abortCancelHandler}>ABORT CANCEL</Button>
                 </div>
             );
         }

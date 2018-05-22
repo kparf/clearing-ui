@@ -2,15 +2,15 @@ import React from 'react';
 import classNames from "classnames";
 import './textarea.css';
 
-function TextArea({label, inputRef, onChange, value}) {
+function TextArea({label, inputRef, onChange, value, className}) {
 
     const textArea = (
-        <textarea className={classNames({'text-area' : !label})} ref={inputRef} onChange={onChange} value={value}/>
+        <textarea className={classNames({'text-area' : !label}, { [className]: !label})} ref={inputRef} onChange={onChange} value={value}/>
     );
 
     if (label) {
         return (
-            <label className="text-area">
+            <label className={`text-area ${className}`}>
                 {label}
                 {textArea}
             </label>

@@ -5,3 +5,15 @@
     width: $base-form-container-width;
     margin: $base-top-margin auto 0 auto;
 }
+
+.provider-reservation-details__actions {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.provider-reservation-details__comment {
+    width: 100%;
+    margin-bottom: 10px;
+}

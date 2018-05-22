@@ -13,7 +13,10 @@ import {
     providerReservationDetailsSuccess,
     providerReservationDetailsConfirm,
     providerReservationDetailsConfirmSuccess,
-    providerReservationDetailsConfirmFail
+    providerReservationDetailsConfirmFail,
+    providerReservationDetailsCancel,
+    providerReservationDetailsCancelSuccess,
+    providerReservationDetailsCancelFail, providerReservationDetailsCancelCommentChange
 } from './sync';
 import api from '../../common/api';
 import { push } from 'react-router-redux';
@@ -28,6 +31,25 @@ export function providerConfirmReservation(id) {
             dispatch(providerReservationDetailsConfirmSuccess(reservation));
         } else {
             dispatch(providerReservationDetailsConfirmFail());
+        }
+    };
+}
+
+export function providerCancelReservation() {
+    return async (dispatch, getStatus) => {
+        const state = getStatus();
+        dispatch(providerReservationDetailsCancel());
+        const comment = state.provider.reservationDetails.cancelComment.value;
+        const id = state.provider.reservationDetails.id;
+
+        const response = await api.providerCancelReservation(id, {comment});
+
+        if (response.ok) {
+            const reservation = await response.json();
+            dispatch(providerReservationDetailsCancelSuccess(reservation));
+            dispatch(providerReservationDetailsCancelCommentChange(false, ''));
+        } else {
+            dispatch(providerReservationDetailsCancelFail());
         }
     };
 }
