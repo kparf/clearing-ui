@@ -9,7 +9,7 @@
   },
   {
     "name" : "Profile",
-    "link" : "/content/provider/profile-edit"
+    "link" : "/content/provider/profile"
   },
   {
     "name" : "Schedule",
